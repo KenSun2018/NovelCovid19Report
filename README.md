@@ -1,6 +1,6 @@
 
 
-# Covid19 report Andrid Kotlin MVVM DataBinding
+# Covid19 report Andrid Kotlin MVVM Project
 
 # 簡介
 此專案使用 Kotlin 練習 MVVM Databinding 架構專案，也因應新冠漢炎的疫情，實作了以下功能：
