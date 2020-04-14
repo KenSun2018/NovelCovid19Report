@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    >
+
+    <data>
+        <variable
+            name="feature"
+            type="com.ken.android.app.novel.covid19.report.repository.bean.Feature" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/pharmacy_detail_toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?android:attr/actionBarSize"-->
+<!--            app:navigationIcon="@drawable/ic_arrow_back_white_24dp"-->
+<!--            app:title="@{feature.properties.name}"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--             />-->
+
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <fragment
+                    android:id="@+id/fragment_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+
+                    class="com.google.android.gms.maps.SupportMapFragment"
+                    app:uiScrollGestures="false"
+                    />
+
+                <include
+                    android:id="@+id/pharmacy_info_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/widget_pharmacy_info"
+                    android:layout_marginTop="@dimen/field_margin"
+                    android:layout_marginLeft="@dimen/field_margin"
+                    android:layout_marginRight="@dimen/field_margin"
+                    />
+
+                <include
+                    android:id="@+id/business_hours_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/widget_pharmacy_business_hours"
+
+                    android:layout_margin="@dimen/field_margin"
+                    />
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

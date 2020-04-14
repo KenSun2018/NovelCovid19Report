@@ -1,0 +1,13 @@
+{
+  "cases": 1201933,
+  "todayCases": 490,
+  "deaths": 64716,
+  "todayDeaths": 28,
+  "recovered": 246634,
+  "active": 890583,
+  "critical": 42290,
+  "casesPerOneMillion": 154,
+  "deathsPerOneMillion": 8.3,
+  "updated": 1586053734072,
+  "affectedCountries": 209
+}

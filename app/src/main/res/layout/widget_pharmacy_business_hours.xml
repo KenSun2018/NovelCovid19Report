@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <import type="java.util.List"/>
+        <variable name="service_periods" type="List&lt;String&gt;" />
+    </data>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        >
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="@dimen/field_margin"
+
+                android:stretchColumns="1,2,3"
+
+                >
+
+                <TextView
+                    android:id="@+id/business_hours_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/business_hours"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+
+
+                    />
+
+                <TableRow android:layout_marginTop="@dimen/field_margin">
+                    <TextView
+                        android:id="@+id/r0_c0_title"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/r0_c1_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_morning"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/r0_c2_afternoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_afternoon"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/r0_c3_evening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_evening"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+                </TableRow>
+
+
+                <TableRow android:layout_marginTop="@dimen/field_margin">
+                    <TextView
+                        android:id="@+id/r1_c0_title"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_monday"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/r1_c1_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_check_circle_green_12dp"
+                        android:src="@{service_periods[0].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r1_c2_afternoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[7].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r1_c3_evening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[14].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="@dimen/field_margin">
+                    <TextView
+                        android:id="@+id/r2_c0_title"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_tuesday"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/r2_c1_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_check_circle_green_12dp"
+                        android:src="@{service_periods[1].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r2_c2_afternoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[8].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r2_c3_evening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[15].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="@dimen/field_margin">
+                    <TextView
+                        android:id="@+id/r3_c0_title"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_wednesday"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/r3_c1_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_check_circle_green_12dp"
+                        android:src="@{service_periods[2].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r3_c2_afternoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[9].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r3_c3_evening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[16].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="@dimen/field_margin">
+                    <TextView
+                        android:id="@+id/r4_c0_title"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_thursday"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/r4_c1_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_check_circle_green_12dp"
+                        android:src="@{service_periods[3].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r4_c2_afternoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[10].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r4_c3_evening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[17].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="@dimen/field_margin">
+                    <TextView
+                        android:id="@+id/r5_c0_title"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_friday"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/r5_c1_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_check_circle_green_12dp"
+                        android:src="@{service_periods[4].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r5_c2_afternoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[11].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r5_c3_evening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[18].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+                </TableRow>
+
+
+                <TableRow android:layout_marginTop="@dimen/field_margin">
+                    <TextView
+                        android:id="@+id/r6_c0_title"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_saturday"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/r6_c1_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_check_circle_green_12dp"
+                        android:src="@{service_periods[5].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r6_c2_afternoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[12].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r6_c3_evening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[19].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="@dimen/field_margin">
+                    <TextView
+                        android:id="@+id/r7_c0_title"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/business_hours_sunday"
+                        android:textSize="@dimen/text_size_subtitle"
+                        >
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/r7_c1_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_check_circle_green_12dp"
+                        android:src="@{service_periods[6].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r7_c2_afternoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[13].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/r7_c3_evening"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/ic_cancel_red_12dp"
+                        android:src="@{service_periods[20].equals(`N`) ? @drawable/ic_check_circle_green_12dp : @drawable/ic_cancel_red_12dp, default=@drawable/transparent_drawable}"
+                        >
+                    </ImageView>
+                </TableRow>
+            </TableLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

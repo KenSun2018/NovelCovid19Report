@@ -1,0 +1,138 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+//請去 https://newsapi.org/ 申請 api key 這裡為了個人 api key 不外流，是用P參數導進來的
+def NEWS_API_KEY = ""
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.ken.android.app.novel.covid19.report"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        NEWS_API_KEY = project.hasProperty("newsApiKey")? newsApiKey : NEWS_API_KEY
+
+        buildConfigField "String", "NEWS_API_KEY", "\"${NEWS_API_KEY}\""
+
+        println "======> news api key = ${NEWS_API_KEY}"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "IS_APP_DEBUG", "false"
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "IS_APP_DEBUG", "true"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    dataBinding{
+        enabled true
+    }
+    sourceSets {
+        String repositoryFakeResponseJsonFolder = "src/unitTestResource/res"
+        String unitTestJavaFolder = "src/unitTestResource/java"
+
+        test {
+            java.srcDir unitTestJavaFolder
+            resources.srcDirs += repositoryFakeResponseJsonFolder
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation 'androidx.test:core:1.2.0' //basic unit test
+    testImplementation 'io.mockk:mockk:1.8.6' // mock for kotlin
+    testImplementation 'android.arch.core:core-testing:1.1.1' // LiveData unit test
+
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4"
+
+    // AndroidX Framework
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.fragment:fragment-ktx:1.2.4'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
+    // TabLayoutMediator
+    implementation 'com.google.android.material:material:1.2.0-alpha05'
+
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
+
+    // Retrofit2
+    implementation "com.squareup.retrofit2:retrofit:2.7.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.7.1"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+
+//    // OkHttp
+//    implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.14.7"
+
+    //RXJava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.14"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
+
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:4.11.0"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.11.0"
+
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+
+    // 65535 method limit
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+
+    // map but not implement
+    implementation "com.google.android.gms:play-services-maps:17.0.0"
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.maps.android:android-maps-utils:1.0.2'
+
+    // leak
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
+}

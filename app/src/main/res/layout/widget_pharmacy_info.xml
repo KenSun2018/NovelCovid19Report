@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="properties"
+            type="com.ken.android.app.novel.covid19.report.repository.bean.Properties" />
+
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/field_margin"
+            >
+
+            <TextView
+                android:id="@+id/pharmacy_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{properties.name}"
+                tools:text="天佑台灣"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_title"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/notice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/pharmacy_notice"
+                android:textSize="@dimen/text_size_normal_text"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+
+            <TextView
+                android:id="@+id/mask_adult_field_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/mask_field_min_width"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/mask_adult_field_value"
+                android:text="@string/tw_mask_map_mask_adult_amount_field_title"
+
+                android:textSize="@dimen/text_size_subtitle"
+
+                />
+
+            <TextView
+                android:id="@+id/mask_adult_field_value"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toRightOf="@id/mask_adult_field_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notice"
+                app:layout_constraintBottom_toBottomOf="@id/mask_adult_field_title"
+                android:layout_marginLeft="@dimen/field_margin"
+                android:textSize="@dimen/text_size_big_text"
+                android:gravity="bottom|right"
+                tools:text="9999"
+                android:text="@{``+properties.mask_adult}"
+
+                android:layout_marginTop="@dimen/field_margin"
+
+                />
+
+            <TextView
+                android:id="@+id/mask_child_field_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/mask_field_min_width"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/mask_child_field_value"
+                android:text="@string/tw_mask_map_mask_child_amount_field_title"
+                android:textSize="@dimen/text_size_subtitle"
+                />
+
+            <TextView
+                android:id="@+id/mask_child_field_value"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toRightOf="@id/mask_child_field_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mask_adult_field_value"
+                app:layout_constraintBottom_toBottomOf="@id/mask_child_field_title"
+                android:layout_marginLeft="@dimen/field_margin"
+                android:textSize="@dimen/text_size_big_text"
+                android:gravity="bottom|right"
+                tools:text="9999"
+                android:text="@{``+properties.mask_child}"
+
+                android:layout_marginTop="@dimen/field_margin"
+                />
+
+            <TextView
+                android:id="@+id/update_time_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/field_title_update_time"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/update_time_value"
+                android:textSize="@dimen/text_size_subtitle"
+                />
+
+            <TextView
+                android:id="@+id/update_time_value"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/mask_child_field_value"
+                app:layout_constraintLeft_toRightOf="@id/update_time_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/update_time_title"
+                android:text="@{properties.updated}"
+                android:gravity="bottom|right"
+                tools:text="2020/04/11 22:22:22"
+                android:layout_marginTop="@dimen/field_margin"
+                android:textSize="18sp"
+                />
+
+
+            <TextView
+                android:id="@+id/pharmacy_phone_number_field_value"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/pharmacy_phone_icon"
+                app:layout_constraintTop_toTopOf="@id/pharmacy_phone_icon"
+                app:layout_constraintBottom_toBottomOf="@id/pharmacy_phone_icon"
+                android:text="@{properties.phone}"
+                android:textSize="@dimen/text_size_big_text"
+                tools:text="02-22222222"
+
+                />
+            <ImageView
+                android:id="@+id/pharmacy_phone_icon"
+                android:layout_width="@dimen/pharmacy_icon_dimension"
+                android:layout_height="@dimen/pharmacy_icon_dimension"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/update_time_value"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_call_gray_24dp"
+                />
+
+
+            <TextView
+                android:id="@+id/pharmacy_address_field_value"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/pharmacy_phone_icon"
+                app:layout_constraintTop_toTopOf="@id/pharmacy_navigation_icon"
+                app:layout_constraintBottom_toBottomOf="@id/pharmacy_navigation_icon"
+                android:text="@{properties.address}"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:lines="1"
+                android:textSize="@dimen/text_size_big_text"
+                tools:text="台灣加油，世界加油"
+                />
+            <ImageView
+                android:id="@+id/pharmacy_navigation_icon"
+                android:layout_width="@dimen/pharmacy_icon_dimension"
+                android:layout_height="@dimen/pharmacy_icon_dimension"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_phone_icon"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_navigation_gray_24dp"
+                />
+
+            <TextView
+                android:id="@+id/pharmacy_note"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_navigation_icon"
+                android:textSize="@dimen/text_size_big_text"
+                android:layout_marginTop="@dimen/field_margin"
+                tools:text="肺炎退散"
+                android:text="@{properties.note}"
+                />
+
+            <TextView
+                android:id="@+id/pharmacy_custom_note"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_note"
+                android:textSize="@dimen/text_size_big_text"
+                android:layout_marginTop="@dimen/field_margin"
+                tools:text="藥師辛苦拉"
+                android:text="@{properties.custom_note}"
+                android:visibility="@{properties.custom_note.equals(``) ? View.GONE : View.VISIBLE }"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

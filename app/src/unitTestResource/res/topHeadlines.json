@@ -1,0 +1,32 @@
+{
+  "status": "ok",
+  "totalResults": 2,
+  "articles": [
+    {
+      "source": {
+        "id": null,
+        "name": "Ltn.com.tw"
+      },
+      "author": "自由時報",
+      "title": "芭芭拉史翠珊讚防疫 蔡英文轉推：台灣樂意分享經驗 - 自由時報電子報",
+      "description": "美國藝人芭芭拉史翠珊今天在推特上高度肯定台灣防疫成績，總統蔡英文隨後也轉推這則推文並說，台灣相當樂意與世界各地的朋友分享經驗，文末並標記「台灣能夠幫忙」（#TaiwanCanHelp）。台灣在這次2019冠狀病毒疾病（COVID-19，俗稱武漢肺炎）防疫成績有目共睹，連高齡78歲的美國老牌藝人芭芭拉史翠珊，今天都在推特上給予高度肯定。",
+      "url": "https://news.ltn.com.tw/news/politics/breakingnews/3123819",
+      "urlToImage": "https://img.ltn.com.tw/Upload/news/600/2020/04/05/phpojeV15.jpg",
+      "publishedAt": "2020-04-05T11:11:02Z",
+      "content": "...Its encouraging to have one of the worlds most distinctive voices speak up in support for Taiwans proactive approach to fighting the #COVID19 outbreak. We are more than willing to share our experiences with friends around the world as well. #TaiwanCanHelph… [+59 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Yahoo.com"
+      },
+      "author": "林柏宏採訪",
+      "title": "油價暴跌 川普：如需保護能源工人 可能徵進口原油關稅 - Yahoo奇摩新聞",
+      "description": "美國總統川普4日表示，如果他必須保護能源工人不受原油價格崩盤衝擊，他可能對進口原油加徵關稅、或是採取其他措施。川普在一場有關俗稱武漢肺炎的2019年冠狀病毒疾病(COVID-19)的簡報會上對記者表示：「如果我必須對來自外部的原油徵收關稅、或是我必須做一些事情來保護我們的...數以萬計的能源工人、和我們提供所有這些工作的優良公司，我將做我必須做的，不論那是什麼。」由於武漢肺炎疫情大流行衝擊原油需求、以及俄羅斯和沙烏地阿拉伯在這場爭奪市場佔有率的戰爭中紛紛提高產量，原油價格已處於成崩盤狀態。在3日與大型原油公司的高…",
+      "url": "https://tw.news.yahoo.com/%E6%B2%B9%E5%83%B9%E6%9A%B4%E8%B7%8C-%E5%B7%9D%E6%99%AE-%E5%A6%82%E9%9C%80%E4%BF%9D%E8%AD%B7%E8%83%BD%E6%BA%90%E5%B7%A5%E4%BA%BA-%E5%8F%AF%E8%83%BD%E5%BE%B5%E9%80%B2%E5%8F%A3%E5%8E%9F%E6%B2%B9%E9%97%9C%E7%A8%85-005808043.html",
+      "urlToImage": "https://s.yimg.com/cv/apiv2/social/images/yahoo_default_logo.png",
+      "publishedAt": "2020-04-05T00:58:00Z",
+      "content": null
+    }
+  ]
+}

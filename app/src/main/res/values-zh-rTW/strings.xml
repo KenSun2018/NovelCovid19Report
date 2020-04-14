@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">全球新冠肺炎資訊</string>
+
+    <!-- main activity tabs -->
+    <string name="tab_title_news">相關新聞</string>
+    <string name="tab_title_country">各國資訊</string>
+
+
+    <!-- covid19 report field -->
+    <string name="field_title_global">全球確診資訊</string>
+    <string name="field_title_update_time">資料更新時間 : </string>
+    <string name="field_title_cases">確診人數 : </string>
+    <string name="field_title_deaths">死亡人數 : </string>
+    <string name="field_title_recovered">康復人數 : </string>
+    <string name="field_title_critical">重症人數 : </string>
+    <string name="field_title_today_cases">今日確診人數 : </string>
+    <string name="field_title_today_deaths">今日死亡人數 : </string>
+
+
+
+
+
+
+
+    <!-- about me -->
+    <string name="field_title_developer_email">開發者信箱：</string>
+    <string name="field_value_developer_email">usc.im.sun@gmail.com</string>
+
+    <string name="search_btn_text">搜尋</string>
+    <string name="search_dialog_text">搜尋國家(Eng)</string>
+    <string name="search_not_found">搜尋 %s 失敗</string>
+
+    <string name="search_country_hint">請輸入英文國名</string>
+    <string name="news_search_key">肺炎</string>
+
+    <!-- map -->
+    <string name="tab_title_tw_mask_map">台灣口罩地圖</string>
+    <string name="tw_mask_map_pharmacy_name_field_title">店面名稱 : </string>
+    <string name="tw_mask_map_mask_adult_amount_field_title">成人口罩數量 : </string>
+    <string name="tw_mask_map_mask_child_amount_field_title">孩童口罩數量 : </string>
+    <string name="tw_mask_map_pharmacy_address_field_title">地址 : </string>
+    <string name="tw_mask_map_pharmacy_phone_number_field_title">電話 : </string>
+    <string name="tw_mask_map_pharmacy_note_field_title">備註說明 : </string>
+
+
+    <string name="business_hours_morning">上午</string>
+    <string name="business_hours_afternoon">下午</string>
+    <string name="business_hours_evening">晚上</string>
+    <string name="business_hours_monday">週一</string>
+    <string name="business_hours_tuesday">週二</string>
+    <string name="business_hours_wednesday">週三</string>
+    <string name="business_hours_thursday">週四</string>
+    <string name="business_hours_friday">週五</string>
+    <string name="business_hours_saturday">週六</string>
+    <string name="business_hours_sunday">週日</string>
+    <string name="business_hours">營業時段</string>
+</resources>

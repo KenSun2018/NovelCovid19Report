@@ -1,0 +1,44 @@
+[
+  {
+    "country": "城鎮測試1",
+    "countryInfo": {
+      "_id": null,
+      "iso2": null,
+      "iso3": null,
+      "lat": 0,
+      "long": 0,
+      "flag": "https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/unknow.png"
+    },
+    "cases": 10,
+    "todayCases": 1,
+    "deaths": 0,
+    "todayDeaths": 0,
+    "recovered": 10,
+    "active": 1,
+    "critical": 39650,
+    "casesPerOneMillion": 145,
+    "deathsPerOneMillion": 7.7,
+    "updated": 1586002527419
+  },
+  {
+    "country": "城鎮測試2",
+    "countryInfo": {
+      "_id": null,
+      "iso2": null,
+      "iso3": null,
+      "lat": 0,
+      "long": 0,
+      "flag": "https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/unknow.png"
+    },
+    "cases": 10,
+    "todayCases": 1,
+    "deaths": 0,
+    "todayDeaths": 0,
+    "recovered": 10,
+    "active": 1,
+    "critical": 39650,
+    "casesPerOneMillion": 145,
+    "deathsPerOneMillion": 7.7,
+    "updated": 1586002527419
+  }
+]

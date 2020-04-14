@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.ken.android.app.novel.covid19.report.ui.news.NewsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/global_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+<!--        <include android:id="@+id/global_view"-->
+<!--            layout="@layout/widget_global_total_cast"-->
+<!--            app:globalTotalCase="@{globalTotalCase}"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            />-->
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE }"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

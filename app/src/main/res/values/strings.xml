@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">COVID19 Report</string>
+
+    <!-- main activity tabs -->
+    <string name="tab_title_news">COVID19 News</string>
+    <string name="tab_title_tw_mask_map">Taiwan Mask Map</string>
+    <string name="tab_title_country">Country</string>
+
+
+
+    <!-- covid19 report field -->
+    <string name="field_title_global">global information</string>
+    <string name="field_title_update_time">update time : </string>
+    <string name="field_title_cases">cases : </string>
+    <string name="field_title_deaths">deaths : </string>
+    <string name="field_title_recovered">recovered : </string>
+    <string name="field_title_critical">critical : </string>
+    <string name="field_title_today_cases">today cases : </string>
+    <string name="field_title_today_deaths">today deaths : </string>
+
+
+
+
+
+    <string name="search_dialog_text">search country</string>
+    <string name="search_btn_text">search</string>
+
+    <!-- about me -->
+    <string name="field_title_developer_email">Email : </string>
+    <string name="field_value_developer_email">usc.im.sun@gmail.com</string>
+
+    <string name="search_not_found">%s not found</string>
+    <string name="search_country_hint">search by english</string>
+    <string name="news_search_key">covid</string>
+
+    <!--有限制 package + debug key，請用自已的 account 去申請 Google Api Key-->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAfVQuXMFJBk-ARA6X5Ug4fyjIA9_3xqGA</string>
+
+    <!-- map -->
+    <string name="tw_mask_map_pharmacy_name_field_title">pharmacyname : </string>
+    <string name="tw_mask_map_mask_adult_amount_field_title">mask for adult amount : </string>
+    <string name="tw_mask_map_mask_child_amount_field_title">mask for child amount : </string>
+    <string name="tw_mask_map_pharmacy_address_field_title">address : </string>
+    <string name="tw_mask_map_pharmacy_phone_number_field_title">number : </string>
+    <string name="tw_mask_map_pharmacy_note_field_title">notice : </string>
+
+
+    <string name="business_hours_morning">morning</string>
+    <string name="business_hours_afternoon">afternoon</string>
+    <string name="business_hours_evening">evening</string>
+    <string name="business_hours_monday">Monday</string>
+    <string name="business_hours_tuesday">Tuesday</string>
+    <string name="business_hours_wednesday">Wednesday</string>
+    <string name="business_hours_thursday">Thursday</string>
+    <string name="business_hours_friday">Friday</string>
+    <string name="business_hours_saturday">Saturday</string>
+    <string name="business_hours_sunday">Sunday</string>
+    <string name="business_hours">Business Hours</string>
+    <string name="pharmacy_notice" translatable="false">實際數量依現場數量為準，線上數量僅供參考\n致電詢問前，請先確認營業時間</string>
+</resources>
