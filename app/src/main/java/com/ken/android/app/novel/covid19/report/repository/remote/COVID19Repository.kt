@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
 class COVID19Repository (interceptor: Interceptor){
     companion object{
         private const val TAG = "COVID19Repository"
-        private const val BASE_URL = "https://corona.lmao.ninja/"
+        private const val BASE_URL = "https://corona.lmao.ninja/v2/"
 
         const val TIME_OUT_CONNECT = 30
         const val TIME_OUT_READ = 30

@@ -15,7 +15,7 @@ class COVID19RxApiRepository(interceptor: Interceptor) : BaseApiConfig(intercept
 
     companion object{
         private const val TAG = "COVID19RxApiRepository"
-        private const val BASE_URL = "https://corona.lmao.ninja/"
+        private const val BASE_URL = "https://corona.lmao.ninja/v2/"
     }
 
 
