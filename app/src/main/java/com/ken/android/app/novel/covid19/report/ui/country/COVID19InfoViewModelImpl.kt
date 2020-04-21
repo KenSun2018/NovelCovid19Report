@@ -10,7 +10,7 @@ import com.ken.android.app.novel.covid19.report.repository.remote.COVID19Reposit
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 
 
-class COVID19ViewModelImpl : ViewModel(), COVID19ViewModel {
+class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
 
     private var covid19Repository = COVID19Repository(OKHttpBaseInterceptor())
 

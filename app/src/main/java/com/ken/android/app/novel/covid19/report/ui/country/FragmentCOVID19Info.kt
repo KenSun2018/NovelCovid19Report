@@ -1,6 +1,5 @@
 package com.ken.android.app.novel.covid19.report.ui.country
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,15 +16,15 @@ import com.ken.android.app.novel.covid19.report.databinding.FragmentCountryBindi
 import com.ken.android.app.novel.covid19.report.ui.country.dialog.CountryListDialogFragment
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
 
-class FragmentCountry : Fragment() {
+class FragmentCOVID19Info : Fragment() {
 
     companion object{
-        const val TAG = "FragmentCountry"
+        const val TAG = "FragmentCOVID19Info"
     }
 
-    private val viewModel : COVID19ViewModel by lazy {
+    private val infoViewModel : COVID19InfoViewModel by lazy {
         ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application).create(
-            COVID19ViewModelRxImpl::class.java)
+            COVID19InfoViewModelRxImpl::class.java)
     }
 
     private lateinit var binding : FragmentCountryBinding
@@ -36,7 +35,7 @@ class FragmentCountry : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate<FragmentCountryBinding>(inflater, R.layout.fragment_country, container, true)
-        binding.viewModel = viewModel
+        binding.viewModel = infoViewModel
         binding.countryRecyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -45,7 +44,7 @@ class FragmentCountry : Fragment() {
         binding.countryRecyclerView.addItemDecoration(itemDecoration)
         binding.refresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
             override fun onRefresh() {
-                viewModel.loadGlobalTotalCase()
+                infoViewModel.loadGlobalTotalCase()
             }
         })
         return binding.root
@@ -54,35 +53,35 @@ class FragmentCountry : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.getGlobalCaseLiveData().observe(requireActivity(), Observer {
+        infoViewModel.getGlobalCaseLiveData().observe(requireActivity(), Observer {
             adapter.setGlobalCase(it)
-            viewModel.loadCountries()
+            infoViewModel.loadCountries()
         })
 
-        viewModel.getGlobalCaseErrorLiveData().observe(requireActivity(), Observer {
-            viewModel.loadCountries()
+        infoViewModel.getGlobalCaseErrorLiveData().observe(requireActivity(), Observer {
+            infoViewModel.loadCountries()
         })
 
-        viewModel.getCountriesLiveData().observe(requireActivity(), Observer {
+        infoViewModel.getCountriesLiveData().observe(requireActivity(), Observer {
             binding.refresh.isRefreshing = false
             adapter.setCountryList(it)
             adapter.notifyDataSetChanged()
 
 
         })
-        viewModel.getCountriesErrorLiveData().observe(requireActivity(), Observer {
+        infoViewModel.getCountriesErrorLiveData().observe(requireActivity(), Observer {
             Toast.makeText(requireActivity(), "error $it", Toast.LENGTH_LONG).show()
             adapter.notifyDataSetChanged()
         })
 
-        viewModel.searchErrorLiveData().observe(requireActivity(), Observer {
+        infoViewModel.searchErrorLiveData().observe(requireActivity(), Observer {
             val searchNotFoundKeyWord = resources.getString(R.string.search_not_found)
             Toast.makeText(requireActivity(),String.format(searchNotFoundKeyWord, it) , Toast.LENGTH_SHORT).show()
         })
 
         binding.searchButton.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
-                val countries = viewModel.getCountriesLiveData().value
+                val countries = infoViewModel.getCountriesLiveData().value
                 if(countries == null){
                     val searchNotFoundKeyWord = resources.getString(R.string.search_not_found)
                     Toast.makeText(requireActivity(),String.format(searchNotFoundKeyWord, "") , Toast.LENGTH_SHORT).show()
@@ -92,7 +91,7 @@ class FragmentCountry : Fragment() {
                 val fragment = CountryListDialogFragment.newInstance(searchTitle, countries)
                 fragment.setOnCountryClickListener(object : CountryListDialogFragment.OnCountryClickListener{
                     override fun onCountryClick(country: String) {
-                        viewModel.search(country)
+                        infoViewModel.search(country)
                     }
                 })
 
@@ -102,11 +101,11 @@ class FragmentCountry : Fragment() {
 
 
         binding.countryRecyclerView.adapter = adapter
-        viewModel.loadGlobalTotalCase()
+        infoViewModel.loadGlobalTotalCase()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.destroy()
+        infoViewModel.destroy()
     }
 }

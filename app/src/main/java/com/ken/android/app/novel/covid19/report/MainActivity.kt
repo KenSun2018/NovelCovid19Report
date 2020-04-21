@@ -1,9 +1,5 @@
 package com.ken.android.app.novel.covid19.report
 
-import android.Manifest
-import android.app.Activity
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -16,25 +12,16 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ken.android.app.novel.covid19.report.databinding.ActivityMainBinding
-
-import com.ken.android.app.novel.covid19.report.ui.country.FragmentCountry
+import com.ken.android.app.novel.covid19.report.ui.country.FragmentCOVID19Info
 import com.ken.android.app.novel.covid19.report.ui.map.FragmentTWMaskMap
 import com.ken.android.app.novel.covid19.report.ui.news.FragmentNews
+import com.ken.android.app.novel.covid19.report.utils.PermissionUtils
 import java.util.*
-import kotlin.collections.ArrayList
 
-
-/**
- * tw mask fragment visible condition
- * 1. tw
- * 2. has permission
- * **/
 
 class MainActivity : AppCompatActivity() {
     companion object{
         private const val TAG = "MainActivity"
-
-        private val REQUIRE_PERMISSION_LIST = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
         private const val PERMISSION_REQUEST_CODE = 100
     }
 
@@ -50,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         val language = Locale.getDefault().country
         if(language.equals("tw", ignoreCase = true) && hasGooglePlay()){
-            checkPermission(false)
+            checkPermissionForTaiwanMask()
         }else{
             setupViewPager()
         }
@@ -68,36 +55,22 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun getPermissionDeniedList() : Array<String>{
-        val requirePermissionList = ArrayList<String>()
-        for(requirePermission in REQUIRE_PERMISSION_LIST){
-            val permission = ActivityCompat.checkSelfPermission(this.applicationContext, requirePermission)
-            if(permission == PackageManager.PERMISSION_DENIED){
-                requirePermissionList.add(requirePermission)
-            }
-        }
-        val array = arrayOfNulls<String>(requirePermissionList.size)
-        return requirePermissionList.toArray(array)
-    }
-
-    private fun checkPermission(isOnActivityResult : Boolean){
-        val deniedList = getPermissionDeniedList()
+    private fun checkPermissionForTaiwanMask(){
+        val deniedList = PermissionUtils.getDeniedPermissions(this.applicationContext);
         if(deniedList.isNotEmpty()){
-            if(isOnActivityResult){
-                setupViewPager()
-                return
-            }
             ActivityCompat.requestPermissions( this, deniedList , PERMISSION_REQUEST_CODE )
             return
         }
+        setupViewPagerWithTwMaskMap()
+    }
 
+    private fun setupViewPagerWithTwMaskMap(){
         isDisplayTwMaskMapFragment = true
         viewPagerPageCount = 3
         setupViewPager()
     }
 
     private fun setupViewPager(){
-
         binding.mainViewpager.adapter = ViewPagerAdapter(this)
         binding.mainViewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
 
@@ -110,6 +83,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
         TabLayoutMediator(binding.mainTablayout, binding.mainViewpager, true,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
@@ -135,7 +109,7 @@ class MainActivity : AppCompatActivity() {
         override fun createFragment(position: Int): Fragment =
 
             when (position) {
-                0 -> FragmentCountry()
+                0 -> FragmentCOVID19Info()
                 1 -> FragmentNews()
                 2 -> {
                     if(isDisplayTwMaskMapFragment){
@@ -155,21 +129,16 @@ class MainActivity : AppCompatActivity() {
     ) {
 
         if(requestCode == PERMISSION_REQUEST_CODE){
-            checkPermission(true)
+            val deniedList = PermissionUtils.getDeniedPermissions(this.applicationContext);
+            if(deniedList.isNotEmpty()){
+                setupViewPager()
+                return
+            }
+            setupViewPagerWithTwMaskMap()
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(requestCode == PERMISSION_REQUEST_CODE){
-            if(resultCode == Activity.RESULT_OK){
-                checkPermission(true)
-            }else{
-                setupViewPager()
-            }
-        }
 
-        super.onActivityResult(requestCode, resultCode, data)
-    }
 
 }

@@ -8,7 +8,6 @@ import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxAp
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.mockk.verify
 import io.mockk.verifySequence
 import io.reactivex.Single
 import org.junit.Assert
@@ -26,7 +25,7 @@ class COVID19ViewModelRxImplTest{
     var instantExecutorRule = InstantTaskExecutorRule()
 
 
-    private var covid19ViewModel = COVID19ViewModelRxImpl()
+    private var covid19ViewModel = COVID19InfoViewModelRxImpl()
 
     @MockK
     private lateinit var mockRepository: COVID19RxApiRepository

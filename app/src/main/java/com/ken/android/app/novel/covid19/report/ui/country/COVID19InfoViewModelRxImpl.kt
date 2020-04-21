@@ -12,7 +12,7 @@ import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxAp
 import io.reactivex.disposables.CompositeDisposable
 
 
-open class COVID19ViewModelRxImpl() : ViewModel(), COVID19ViewModel {
+open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
 
     private var covid19RxApiRepository =  COVID19RxApiRepository(OKHttpBaseInterceptor())
 

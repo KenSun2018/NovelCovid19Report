@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.ken.android.app.novel.covid19.report.ui.country.COVID19ViewModel" />
+            type="com.ken.android.app.novel.covid19.report.ui.country.COVID19InfoViewModel" />
     </data>
 
 
