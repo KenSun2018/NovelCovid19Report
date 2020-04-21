@@ -38,12 +38,7 @@ https://newsapi.org/
 https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json
 <br>(如有任何侵權問題，請再和我說)
 
-# 備註
-* Google Map<br>
-需自行申請 Google API Key
 
-* News API<br>
-需至 [官網](https://newsapi.org/) 申請 api key，在 build 階段傳入P參數，請參考gradle<br>
 
 
 

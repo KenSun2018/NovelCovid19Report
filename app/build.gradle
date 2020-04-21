@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-//請去 https://newsapi.org/ 申請 api key 這裡為了個人 api key 不外流，是用P參數導進來的
-def NEWS_API_KEY = ""
+//請去 https://newsapi.org/ 申請 api key
+def NEWS_API_KEY = "1d7202994f7d4a3dbd53cbcbac0650a9"
 
 
 android {
@@ -20,7 +20,7 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        NEWS_API_KEY = project.hasProperty("newsApiKey")? newsApiKey : NEWS_API_KEY
+        //NEWS_API_KEY = project.hasProperty("newsApiKey")? newsApiKey : NEWS_API_KEY
 
         buildConfigField "String", "NEWS_API_KEY", "\"${NEWS_API_KEY}\""
 
