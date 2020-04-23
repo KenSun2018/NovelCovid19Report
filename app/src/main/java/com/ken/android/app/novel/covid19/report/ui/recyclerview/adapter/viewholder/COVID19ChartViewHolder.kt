@@ -5,7 +5,7 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.WidgetCountryChartBinding
-import com.ken.android.app.novel.covid19.report.repository.bean.COVID19ChartData
+import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 
 class COVID19ChartViewHolder (private var binding : WidgetCountryChartBinding) : BaseViewHolder(binding.root){
     override fun setData(itemData: Any) {

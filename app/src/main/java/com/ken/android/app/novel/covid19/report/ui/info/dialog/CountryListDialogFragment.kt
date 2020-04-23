@@ -1,4 +1,4 @@
-package com.ken.android.app.novel.covid19.report.ui.country.dialog
+package com.ken.android.app.novel.covid19.report.ui.info.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.ken.android.app.novel.covid19.report.R

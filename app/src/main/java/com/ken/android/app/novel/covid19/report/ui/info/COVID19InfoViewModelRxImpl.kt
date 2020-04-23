@@ -1,11 +1,11 @@
-package com.ken.android.app.novel.covid19.report.ui.country
+package com.ken.android.app.novel.covid19.report.ui.info
 
 import androidx.annotation.VisibleForTesting
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ken.android.app.novel.covid19.report.repository.bean.COVID19ChartData
+import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
@@ -89,7 +89,10 @@ open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
 
 
             countriesLiveData.value = countries
-            covid19ChartLiveData.value = COVID19ChartData(countries)
+            covid19ChartLiveData.value =
+                COVID19ChartData(
+                    countries
+                )
         }, { t ->
             isLoading.set(false)
             countriesErrorLiveData.value = "${t.message}"

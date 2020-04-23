@@ -1,33 +1,37 @@
 package com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter
 
 import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.viewholder.BaseViewHolder
 
-abstract class BaseAdapter : RecyclerView.Adapter<BaseViewHolder>() {
+open class BaseAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
-    protected var dataList : ArrayList<Any> = ArrayList<Any>()
+    protected var baseAdapterItemDataList : ArrayList<BaseAdapterItemData> = ArrayList<BaseAdapterItemData>()
 
     private var onItemViewClickListener : View.OnClickListener ?= null
 
 
-    final override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        val targetData = dataList[position]
-
-        holder.setDataFromOnBindViewHolder(targetData)
-        holder.setOnViewClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                onItemViewClickListener?.onClick(v)
-            }
-        })
-
-        onViewHolderBinded(holder, position)
+    final override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+        return BaseAdapterViewHolderFactory.createViewHolder(parent, viewType)
     }
 
-    abstract fun onViewHolderBinded(holder: BaseViewHolder, position: Int)
+    final override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        val baseItemData = baseAdapterItemDataList[position]
+        holder.setDataFromOnBindViewHolder(baseItemData.getRealData())
+        holder.setOnViewClickListener(View.OnClickListener { v -> onItemViewClickListener?.onClick(v) })
+    }
+
+    final override fun getItemCount(): Int {
+        return baseAdapterItemDataList.size
+    }
 
     final fun setOnItemViewClickListener(onClickListener : View.OnClickListener){
         this.onItemViewClickListener = onClickListener
+    }
+
+    final override fun getItemViewType(position: Int): Int {
+        return baseAdapterItemDataList[position].getViewType()
     }
 
     companion object{

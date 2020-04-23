@@ -1,7 +1,8 @@
-package com.ken.android.app.novel.covid19.report.ui.country
+package com.ken.android.app.novel.covid19.report.ui.info
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.databinding.ObservableBoolean
+import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
@@ -67,6 +68,8 @@ class COVID19ViewModelRxImplTest{
         Assert.assertEquals(expectGlobalTotalCase.deaths, covid19ViewModel.getGlobalCaseLiveData().value?.deaths)
         Assert.assertEquals(expectGlobalTotalCase.todayCases, covid19ViewModel.getGlobalCaseLiveData().value?.todayCases)
         Assert.assertEquals(expectGlobalTotalCase.cases, covid19ViewModel.getGlobalCaseLiveData().value?.cases)
+
+
     }
 
     @Test
@@ -90,19 +93,26 @@ class COVID19ViewModelRxImplTest{
     @Test
     fun test_viewModelLoadCountriesApi(){
 
-        val countriesList = ArrayList<Country>()
+        val expectCountriesList = ArrayList<Country>()
 
-        for(i in 1 until 10){
+        val countryCount = 20;
+        for(i in 1 until countryCount){
             val country = Country()
             country.country = "country $i"
             country.deaths = "$i"
             country.recovered = "9999999$i"
-            country.cases = "${i*10}"
+            country.cases = "${i*countryCount}"
             country.todayCases = "$i"
-            countriesList.add(country)
+            expectCountriesList.add(country)
         }
+        val expectCOVID19ChartData =
+            COVID19ChartData(
+                expectCountriesList
+            );
 
-        every { mockRepository.getCountries("deaths") } returns Single.just(countriesList)
+
+        every { mockRepository.getCountries("deaths") } returns Single.just(expectCountriesList)
+
         covid19ViewModel.loadCountries()
 
         verifySequence {
@@ -112,9 +122,10 @@ class COVID19ViewModelRxImplTest{
         }
 
         Assert.assertEquals(ArrayList::class.java, covid19ViewModel.getCountriesLiveData().value?.javaClass)
-        Assert.assertEquals(countriesList, covid19ViewModel.getCountriesLiveData().value)
+        Assert.assertEquals(expectCountriesList, covid19ViewModel.getCountriesLiveData().value)
         Assert.assertEquals(false, covid19ViewModel.isLoading().get())
-        Assert.assertEquals(countriesList.size, covid19ViewModel.getCountriesLiveData().value?.size)
+        Assert.assertEquals(expectCountriesList.size, covid19ViewModel.getCountriesLiveData().value?.size)
+
     }
 
 

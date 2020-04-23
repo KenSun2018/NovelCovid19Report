@@ -1,8 +1,8 @@
-package com.ken.android.app.novel.covid19.report.ui.country
+package com.ken.android.app.novel.covid19.report.ui.info
 
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
-import com.ken.android.app.novel.covid19.report.repository.bean.COVID19ChartData
+import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 

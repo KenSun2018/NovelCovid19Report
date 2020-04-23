@@ -1,15 +1,17 @@
-package com.ken.android.app.novel.covid19.report.repository.bean
+package com.ken.android.app.novel.covid19.report.ui.info.data
 
 import android.util.Log
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import java.lang.Exception
 import kotlin.math.ceil
 
 class COVID19ChartData : ValueFormatter {
     companion object{
         private const val TAG = "COVID19ChartData";
+        const val DISPLAY_MAX_AMOUNT = 10
     }
 
     private var filterCountryMap = HashMap<Int, Country>()
@@ -21,9 +23,11 @@ class COVID19ChartData : ValueFormatter {
         for (i in countries.indices){
 
             //前10大
-            if(i > 9){
+            if(i >= DISPLAY_MAX_AMOUNT){
                 break
             }
+
+
             val country = countries[i]
             var deaths = -1f
             try{

@@ -12,7 +12,7 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ken.android.app.novel.covid19.report.databinding.ActivityMainBinding
-import com.ken.android.app.novel.covid19.report.ui.country.FragmentCOVID19Info
+import com.ken.android.app.novel.covid19.report.ui.info.FragmentCOVID19Info
 import com.ken.android.app.novel.covid19.report.ui.map.FragmentTWMaskMap
 import com.ken.android.app.novel.covid19.report.ui.news.FragmentNews
 import com.ken.android.app.novel.covid19.report.utils.PermissionUtils
