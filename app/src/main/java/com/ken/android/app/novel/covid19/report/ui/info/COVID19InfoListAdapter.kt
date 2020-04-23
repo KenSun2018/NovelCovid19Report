@@ -31,13 +31,17 @@ class COVID19InfoListAdapter : BaseAdapter(){
     private fun mergeList(){
         baseAdapterItemDataList.clear()
         val anyDataList = ArrayList<Any>()
-        if(covid19ChartData != null){
-            anyDataList.add(covid19ChartData!!)
-        }
 
         if(globalTotalCase != null){
             anyDataList.add(globalTotalCase!!)
         }
+
+
+        if(covid19ChartData != null){
+            anyDataList.add(covid19ChartData!!)
+        }
+
+
 
         if(countryList.isNotEmpty()){
             anyDataList.addAll(countryList)

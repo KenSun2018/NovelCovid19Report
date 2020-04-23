@@ -1,6 +1,7 @@
 package com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.viewholder
 
 import android.graphics.Color
+import android.os.Build
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.ken.android.app.novel.covid19.report.R
@@ -21,7 +22,7 @@ class COVID19ChartViewHolder (private var binding : WidgetCountryChartBinding) :
 
             val barData = BarData(deathsBarDataSet)
             barData.setValueTextColor(Color.RED)
-            val combinedData = CombinedData();
+            val combinedData = CombinedData()
             combinedData.setData(lineData)
             combinedData.setData(barData)
 
@@ -34,8 +35,8 @@ class COVID19ChartViewHolder (private var binding : WidgetCountryChartBinding) :
             xAxis.labelRotationAngle = -45f
             xAxis.labelCount = itemData.getDeathsBarEntries().size
 
-            xAxis.axisMinimum = -barData.barWidth /2;
-            xAxis.axisMaximum = itemData.getDeathsBarEntries().size-barData.barWidth /2;
+            xAxis.axisMinimum = -barData.barWidth /2
+            xAxis.axisMaximum = itemData.getDeathsBarEntries().size-barData.barWidth /2
 
             val axisRight = binding.countryBarChart.axisRight
             axisRight.setDrawAxisLine(false)
@@ -51,7 +52,14 @@ class COVID19ChartViewHolder (private var binding : WidgetCountryChartBinding) :
 
 
             binding.countryBarChart.description = null
+            binding.countryBarChart.isHighlightPerTapEnabled = false
 
+            binding.countryBarChart.isHighlightFullBarEnabled = false
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                binding.countryBarChart.defaultFocusHighlightEnabled = false
+            }
+
+            binding.countryBarChart.setScaleEnabled(false)
             binding.countryBarChart.invalidate()
         }
     }
