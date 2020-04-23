@@ -5,6 +5,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ken.android.app.novel.covid19.report.repository.bean.COVID19ChartData
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
@@ -24,6 +25,7 @@ open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
     private val countriesLiveData = MutableLiveData<List<Country>>()
     private val countriesErrorLiveData = MutableLiveData<String>()
     private val searchErrorLiveData = MutableLiveData<String>()
+    private val covid19ChartLiveData = MutableLiveData<COVID19ChartData>()
 
     @VisibleForTesting
     fun setMockRepository(covid19RxApiRepository: COVID19RxApiRepository){
@@ -54,6 +56,10 @@ open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
         return countriesErrorLiveData
     }
 
+    override fun getCOVID19ChartLiveData(): LiveData<COVID19ChartData> {
+        return covid19ChartLiveData
+    }
+
     override fun searchErrorLiveData(): LiveData<String> {
         return searchErrorLiveData
     }
@@ -80,8 +86,10 @@ open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
         val disposable = covid19RxApiRepository.getCountries("deaths")
             .subscribe({ countries ->
             isLoading.set(false)
-            countriesLiveData.value = countries
 
+
+            countriesLiveData.value = countries
+            covid19ChartLiveData.value = COVID19ChartData(countries)
         }, { t ->
             isLoading.set(false)
             countriesErrorLiveData.value = "${t.message}"

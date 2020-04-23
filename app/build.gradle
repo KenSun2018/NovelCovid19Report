@@ -135,4 +135,8 @@ dependencies {
 
     // leak
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
+
+
+    // chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

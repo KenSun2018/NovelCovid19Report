@@ -4,6 +4,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ken.android.app.novel.covid19.report.repository.bean.COVID19ChartData
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.COVID19Repository
@@ -36,7 +37,7 @@ class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
 
     private val searchErrorLiveData = MutableLiveData<String>()
 
-
+    private val covid19ChartLiveData = MutableLiveData<COVID19ChartData>()
 
 
 
@@ -94,6 +95,10 @@ class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
 
     override fun getCountriesErrorLiveData(): LiveData<String> {
         return countriesErrorLiveDataLazy
+    }
+
+    override fun getCOVID19ChartLiveData(): LiveData<COVID19ChartData> {
+        return covid19ChartLiveData
     }
 
     override fun searchErrorLiveData(): LiveData<String> {

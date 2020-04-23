@@ -55,4 +55,7 @@
     <string name="business_hours_saturday">週六</string>
     <string name="business_hours_sunday">週日</string>
     <string name="business_hours">營業時段</string>
+    <string name="chart_for_deaths">死亡人數</string>
+    <string name="chart_for_cases">確診人數</string>
+    <string name="chart_covid19_title">新冠肺炎統計圖(前10國)</string>
 </resources>

@@ -28,7 +28,7 @@ class FragmentCOVID19Info : Fragment() {
     }
 
     private lateinit var binding : FragmentCountryBinding
-    private var adapter = CountryListAdapter()
+    private var adapter = COVID19InfoListAdapter()
 
     private var itemDecoration =
         RecyclerViewItemDecoration()
@@ -66,8 +66,11 @@ class FragmentCOVID19Info : Fragment() {
             binding.refresh.isRefreshing = false
             adapter.setCountryList(it)
             adapter.notifyDataSetChanged()
+        })
 
-
+        infoViewModel.getCOVID19ChartLiveData().observe(requireActivity(), Observer {
+            adapter.setCOVID19ChartData(it)
+            adapter.notifyDataSetChanged()
         })
         infoViewModel.getCountriesErrorLiveData().observe(requireActivity(), Observer {
             Toast.makeText(requireActivity(), "error $it", Toast.LENGTH_LONG).show()
