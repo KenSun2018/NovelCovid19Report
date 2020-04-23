@@ -1,6 +1,6 @@
 
 
-# Covid19 report Andrid Kotlin MVVM Project
+# COVID19 report Android Kotlin MVVM Project
 
 # 簡介
 此專案使用 Kotlin 練習 MVVM Databinding 架構專案，也因應新冠漢炎的疫情，實作了以下功能：
@@ -10,6 +10,7 @@
 * 簡易版台灣口罩地圖
 <br>僅支援 Locale.country 在 tw，其他地區不支援
 * 多國語言僅支援中英文
+
 
 # Preview
 ![GitHub](https://github.com/KenSun2018/NovelCovid19Report/blob/master/screenshots/COVID19.gif "preview")
