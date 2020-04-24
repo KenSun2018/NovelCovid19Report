@@ -8,7 +8,7 @@ import java.util.ArrayList
 interface NewsViewModel {
     fun getNewsLiveData() : LiveData<ArrayList<NewsArticle>>
     fun getErrorLiveData() : LiveData<String>
-    fun isLoading() : ObservableBoolean
+    fun isLoading() : LiveData<Boolean>
     fun loadNews(searchKey : String)
 
     fun destroy()

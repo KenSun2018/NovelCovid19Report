@@ -1,25 +1,23 @@
 package com.ken.android.app.novel.covid19.report.ui.info
 
 import androidx.annotation.VisibleForTesting
-import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
+import com.ken.android.app.novel.covid19.report.plusAssign
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
-import io.reactivex.disposables.CompositeDisposable
+import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
+import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 
 
-open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
-
+open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel {
+    companion object{
+        const val TAG = "COVID19ViewModel";
+    }
     private var covid19RxApiRepository =  COVID19RxApiRepository(OKHttpBaseInterceptor())
 
-    private var disposables = CompositeDisposable()
-
-    private var isLoading = ObservableBoolean(false)
     private val globalTotalCaseLiveData = MutableLiveData<GlobalTotalCase>()
     private val globalTotalCaseErrorLiveData = MutableLiveData<String>()
     private val countriesLiveData = MutableLiveData<List<Country>>()
@@ -32,11 +30,7 @@ open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
         this.covid19RxApiRepository = covid19RxApiRepository
     }
 
-    @VisibleForTesting
-    fun setMockLoading(observableBoolean: ObservableBoolean){
-        this.isLoading = observableBoolean
-    }
-    override fun isLoading(): ObservableBoolean {
+    override fun isLoading(): LiveData<Boolean> {
         return isLoading
     }
 
@@ -66,26 +60,30 @@ open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
 
 
     override fun loadGlobalTotalCase(){
-        isLoading.set(true)
-        val disposable = covid19RxApiRepository.getGlobalTotalCase()
+        isLoading.value = true
+        compositeDisposable += covid19RxApiRepository.getGlobalTotalCase()
+            .doFinally{
+                isLoading.value = false
+            }
             .subscribe({ globalTotalCase ->
-            isLoading.set(false)
+
             globalTotalCaseLiveData.value = globalTotalCase
 
         }, { t ->
-            isLoading.set(false)
+
             globalTotalCaseErrorLiveData.value = "${t.message}"
         })
-
-        disposables.add(disposable)
-
     }
 
+
     override fun loadCountries(){
-        isLoading.set(true)
-        val disposable = covid19RxApiRepository.getCountries("deaths")
+        isLoading.value = true
+        compositeDisposable += covid19RxApiRepository.getCountries("deaths")
+            .doFinally{
+                isLoading.value = false
+            }
             .subscribe({ countries ->
-            isLoading.set(false)
+
 
 
             countriesLiveData.value = countries
@@ -94,27 +92,27 @@ open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
                     countries
                 )
         }, { t ->
-            isLoading.set(false)
+
             countriesErrorLiveData.value = "${t.message}"
 
         })
-
-        disposables.add(disposable)
     }
 
     override fun loadCountries(sort : String){
-        isLoading.set(true)
-        val disposable = covid19RxApiRepository.getCountries(sort)
+        isLoading.value = true
+        compositeDisposable += covid19RxApiRepository.getCountries(sort)
+            .doFinally{
+                isLoading.value = false
+            }
             .subscribe({ countries ->
-            isLoading.set(false)
+
             countriesLiveData.value = countries
         }, { t ->
-            isLoading.set(false)
+
             countriesErrorLiveData.value = "${t.message}"
 
         })
 
-        disposables.add(disposable)
     }
 
     override fun search(country: String) {
@@ -139,28 +137,21 @@ open class COVID19InfoViewModelRxImpl() : ViewModel(), COVID19InfoViewModel {
         }
 
 
-        isLoading.set(true)
-        val disposable = covid19RxApiRepository.searchCountry(country)
+        isLoading.value = true
+        compositeDisposable += covid19RxApiRepository.searchCountry(country)
+            .doFinally{
+                isLoading.value = false
+            }
             .subscribe({ it ->
-
-            isLoading.set(false)
-
             val responseCountries = ArrayList<Country>()
             responseCountries.add(it)
             countriesLiveData.value = responseCountries
 
         }, { t ->
-            isLoading.set(false)
+
             countriesErrorLiveData.value = "${t.message}"
-
-
-
         })
-        disposables.add(disposable)
-    }
 
-    override fun destroy() {
-        disposables.clear()
     }
 
 }

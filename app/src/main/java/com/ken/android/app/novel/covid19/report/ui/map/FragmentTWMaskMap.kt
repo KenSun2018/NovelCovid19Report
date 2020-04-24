@@ -30,7 +30,7 @@ import com.ken.android.app.novel.covid19.report.repository.bean.KiangGeoJson
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterItem
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterMarkerManager
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterRender
-
+import com.ken.android.app.novel.covid19.report.ui.news.FragmentNews
 
 
 class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
@@ -58,6 +58,7 @@ class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
         mMapFragment = childFragmentManager.findFragmentById(R.id.fragment_map) as SupportMapFragment
         viewModel = FragmentTWMaskViewModelRxImpl()
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
 

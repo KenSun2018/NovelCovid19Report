@@ -4,7 +4,6 @@ package com.ken.android.app.novel.covid19.report.ui.map
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -94,7 +93,6 @@ class ActivityPharmacyDetail : AppCompatActivity(), OnMapReadyCallback {
         binding.progress.visibility = View.GONE
         val servicePeriod = feature.properties.service_periods
         val list = servicePeriod.chunked(1)
-        Log.e(TAG, " list = $list, list.size = ${list.size}")
         binding.businessHoursLayout.servicePeriods = list
         binding.pharmacyInfoLayout.properties = feature.properties
 

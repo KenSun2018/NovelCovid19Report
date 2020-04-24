@@ -35,7 +35,7 @@ class NewsApiOrgRepository {
 
     var newsLiveData = MutableLiveData<ArrayList<NewsArticle>>()
     var newsErrorLiveData = MutableLiveData<String>()
-    val isNewsLoading = ObservableBoolean(false)
+    val isNewsLoading = MutableLiveData<Boolean>(false)
 
     init {
         apiService = Retrofit.Builder()
@@ -45,18 +45,18 @@ class NewsApiOrgRepository {
     }
 
     fun loadNews(searchKey : String){
-        isNewsLoading.set(true)
+        isNewsLoading.value = true
         val language = Locale.getDefault().country;
 
         apiService.getTopHeadline(searchKey, language, BuildConfig.NEWS_API_KEY).enqueue(object : Callback<News>{
             override fun onFailure(call: Call<News>, t: Throwable) {
-                isNewsLoading.set(false)
+                isNewsLoading.value = false
 
                 newsErrorLiveData.value = "${t.message}"
             }
 
             override fun onResponse(call: Call<News>, response: Response<News>) {
-                isNewsLoading.set(false)
+                isNewsLoading.value = false
                 if (!response.isSuccessful){
                     newsErrorLiveData.value = "loadNews response but not successful"
                     return

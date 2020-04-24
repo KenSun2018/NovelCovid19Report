@@ -1,10 +1,11 @@
 package com.ken.android.app.novel.covid19.report.ui.info.data
 
-import android.util.Log
+
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
+import com.ken.android.app.novel.covid19.report.utils.Log
 import java.lang.Exception
 import kotlin.math.ceil
 

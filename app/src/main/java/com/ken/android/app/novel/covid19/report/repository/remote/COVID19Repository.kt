@@ -30,7 +30,7 @@ class COVID19Repository (interceptor: Interceptor){
 
     private var apiService : COVID19ApiService
 
-    val isLoading = ObservableBoolean(false)
+    val isLoading = MutableLiveData<Boolean>(false)
 
 
     var globalTotalCaseLiveData = MutableLiveData<GlobalTotalCase>()
@@ -63,17 +63,17 @@ class COVID19Repository (interceptor: Interceptor){
 
 
     fun loadGlobalTotalCase() {
-        isLoading.set(true)
+        isLoading.value = true
 
         apiService.getGlobalTotalCase().enqueue(object : Callback<GlobalTotalCase>{
             override fun onFailure(call: Call<GlobalTotalCase>, t: Throwable) {
-                isLoading.set(false)
+                isLoading.value = false
                 globalTotalCaseErrorLiveData.value = "error : ${t.message}"
 
             }
 
             override fun onResponse(call: Call<GlobalTotalCase>, response: Response<GlobalTotalCase>) {
-                isLoading.set(false)
+                isLoading.value = false
                 if(response.isSuccessful){
                     globalTotalCaseLiveData.value = response.body()
                 }else{
@@ -86,15 +86,15 @@ class COVID19Repository (interceptor: Interceptor){
     }
 
     fun loadCountries(){
-        isLoading.set(true)
+        isLoading.value = true
         apiService.getCountries("deaths").enqueue(object : Callback<List<Country>>{
             override fun onFailure(call: Call<List<Country>>, t: Throwable) {
-                isLoading.set(false)
+                isLoading.value = false
                 countriesErrorLiveData.value = t.message
             }
 
             override fun onResponse(call: Call<List<Country>>, response: Response<List<Country>>) {
-                isLoading.set(false)
+                isLoading.value = false
                 if(response.isSuccessful){
                     countriesLiveData.value = response.body()
                 }else{
@@ -107,15 +107,15 @@ class COVID19Repository (interceptor: Interceptor){
     }
 
     fun loadCountriesBySorting(sort : String){
-        isLoading.set(true)
+        isLoading.value = true
         apiService.getCountries(sort).enqueue(object : Callback<List<Country>>{
             override fun onFailure(call: Call<List<Country>>, t: Throwable) {
-                isLoading.set(false)
+                isLoading.value = false
                 countriesErrorLiveData.value = t.message
             }
 
             override fun onResponse(call: Call<List<Country>>, response: Response<List<Country>>) {
-                isLoading.set(false)
+                isLoading.value = false
                 if(response.isSuccessful){
                     countriesLiveData.value = response.body()
                 }else{
@@ -126,15 +126,15 @@ class COVID19Repository (interceptor: Interceptor){
     }
 
     fun search(country: String) {
-        isLoading.set(true)
+        isLoading.value = true
         apiService.searchCountry(country).enqueue(object : Callback<Country>{
             override fun onFailure(call: Call<Country>, t: Throwable) {
-                isLoading.set(true)
+                isLoading.value = true
                 countriesErrorLiveData.value = t.message
             }
 
             override fun onResponse(call: Call<Country>, response: Response<Country>) {
-                isLoading.set(false)
+                isLoading.value = false
 
                 if(response.isSuccessful){
 

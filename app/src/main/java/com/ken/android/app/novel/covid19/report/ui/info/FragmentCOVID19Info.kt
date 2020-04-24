@@ -1,7 +1,6 @@
 package com.ken.android.app.novel.covid19.report.ui.info
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -67,7 +66,9 @@ class FragmentCOVID19Info : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate<FragmentCountryBinding>(inflater, R.layout.fragment_country, container, true)
+
         binding.viewModel = infoViewModel
+        binding.lifecycleOwner = this
         binding.countryRecyclerView.adapter = adapter
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL

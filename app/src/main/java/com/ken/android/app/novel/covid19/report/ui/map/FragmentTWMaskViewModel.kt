@@ -6,7 +6,7 @@ import com.ken.android.app.novel.covid19.report.repository.bean.KiangGeoJson
 
 interface FragmentTWMaskViewModel {
 
-    fun isLoading() : ObservableBoolean
+    fun isLoading() : LiveData<Boolean>
     fun getGeoJsonLiveData() : LiveData<KiangGeoJson>
     fun loadMaskMapData()
     fun destroy()

@@ -20,7 +20,7 @@ class NewsViewModelImpl : ViewModel(), NewsViewModel {
         newsApiRepository.newsErrorLiveData
     }
 
-    private val isNewsLoading : ObservableBoolean by lazy {
+    private val isNewsLoading : LiveData<Boolean> by lazy {
         newsApiRepository.isNewsLoading
     }
 
@@ -30,13 +30,8 @@ class NewsViewModelImpl : ViewModel(), NewsViewModel {
 
     override fun destroy() {
 
-
     }
 
-    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    fun setDataForUnitTest(){
-
-    }
 
     override fun getNewsLiveData(): LiveData<ArrayList<NewsArticle>> {
         return newsLiveDataLazy
@@ -47,7 +42,7 @@ class NewsViewModelImpl : ViewModel(), NewsViewModel {
         return newsErrorLiveDataLazy
     }
 
-    override fun isLoading(): ObservableBoolean {
+    override fun isLoading(): LiveData<Boolean> {
         return isNewsLoading
     }
 }

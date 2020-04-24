@@ -2,6 +2,7 @@ package com.ken.android.app.novel.covid19.report.ui.news
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.MutableLiveData
 import com.ken.android.app.novel.covid19.report.BuildConfig
 import com.ken.android.app.novel.covid19.report.repository.bean.News
 import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
@@ -31,7 +32,7 @@ class NewsViewModelRxImplTest{
     private lateinit var mockRepository: NewsApiOrgRxApiRepository
 
     @MockK
-    private lateinit var mockLoading : ObservableBoolean
+    private lateinit var mockLoading : MutableLiveData<Boolean>
 
     @Before
     fun setUp(){
@@ -40,7 +41,7 @@ class NewsViewModelRxImplTest{
         newsViewModel.setMockLoading(mockLoading)
 
         // mock load finish get value always false, if not false then developer is not close loading
-        every { mockLoading.get() } returns false
+        every { mockLoading.value } returns false
     }
 
     private fun createExpectNewsArticle() : NewsArticle{
@@ -73,9 +74,9 @@ class NewsViewModelRxImplTest{
         newsViewModel.loadNews("covid")
 
         verifySequence {
-            mockLoading.set(true)
+            mockLoading.value = true
             mockRepository.getTopHeadline("covid", language, BuildConfig.NEWS_API_KEY)
-            mockLoading.set(false)
+            mockLoading.value = false
         }
 
 
@@ -84,7 +85,7 @@ class NewsViewModelRxImplTest{
 
         Assert.assertNotNull(realArticles)
         Assert.assertEquals(expectNews.articles, newsViewModel.getNewsLiveData().value)
-        Assert.assertEquals(false, newsViewModel.isLoading().get())
+        Assert.assertEquals(false, newsViewModel.isLoading().value)
         val expectArticles = expectNews.articles
 
 
@@ -96,7 +97,7 @@ class NewsViewModelRxImplTest{
             Assert.assertEquals(expectArticle.description, realArticle.description)
         }
 
-        Assert.assertEquals(false, newsViewModel.isLoading().get())
+        Assert.assertEquals(false, newsViewModel.isLoading().value)
     }
 
     @Test
@@ -109,12 +110,12 @@ class NewsViewModelRxImplTest{
 
 
         verifySequence {
-            mockLoading.set(true)
+            mockLoading.value = true
             mockRepository.getTopHeadline("covid", language, BuildConfig.NEWS_API_KEY)
-            mockLoading.set(false)
+            mockLoading.value = false
         }
         Assert.assertEquals("403 Forbidden", newsViewModel.getErrorLiveData().value)
-        Assert.assertEquals(false, newsViewModel.isLoading().get())
+        Assert.assertEquals(false, newsViewModel.isLoading().value)
     }
 
 }

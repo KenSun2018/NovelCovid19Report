@@ -1,11 +1,11 @@
 package com.ken.android.app.novel.covid19.report.ui.info
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.databinding.ObservableBoolean
-import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
+import androidx.lifecycle.MutableLiveData
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
+import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -32,7 +32,7 @@ class COVID19ViewModelRxImplTest{
     private lateinit var mockRepository: COVID19RxApiRepository
 
     @MockK
-    private lateinit var mockLoading : ObservableBoolean
+    private lateinit var mockLoading : MutableLiveData<Boolean>
 
     @Before
     fun setUp(){
@@ -40,8 +40,8 @@ class COVID19ViewModelRxImplTest{
         covid19ViewModel.setMockRepository(mockRepository)
         covid19ViewModel.setMockLoading(mockLoading)
 
-        // if mockLoading is not false that mean developer is not set isLoading.set(false)
-        every { mockLoading.get() } returns false
+        // if mockLoading is not false that mean developer is not set isLoading.value = false
+        every { mockLoading.value } returns false
     }
 
 
@@ -57,13 +57,13 @@ class COVID19ViewModelRxImplTest{
         covid19ViewModel.loadGlobalTotalCase()
 
         verifySequence {
-            mockLoading.set(true) // verify show progress bar
+            mockLoading.value = true // verify show progress bar
             mockRepository.getGlobalTotalCase() //verify call api
-            mockLoading.set(false) // verify hide progress bar
+            mockLoading.value = false // verify hide progress bar
         }
 
         Assert.assertEquals(expectGlobalTotalCase, covid19ViewModel.getGlobalCaseLiveData().value)
-        Assert.assertEquals(false, covid19ViewModel.isLoading().get())
+        Assert.assertEquals(false, covid19ViewModel.isLoading().value)
         Assert.assertEquals(expectGlobalTotalCase.todayDeaths, covid19ViewModel.getGlobalCaseLiveData().value?.todayDeaths)
         Assert.assertEquals(expectGlobalTotalCase.deaths, covid19ViewModel.getGlobalCaseLiveData().value?.deaths)
         Assert.assertEquals(expectGlobalTotalCase.todayCases, covid19ViewModel.getGlobalCaseLiveData().value?.todayCases)
@@ -80,13 +80,14 @@ class COVID19ViewModelRxImplTest{
         covid19ViewModel.loadGlobalTotalCase()
 
         verifySequence {
-            mockLoading.set(true)
+            mockLoading.value = true
             mockRepository.getGlobalTotalCase()
-            mockLoading.set(false)
+            mockLoading.value = false
+
         }
 
         Assert.assertEquals(exceptionMsg, covid19ViewModel.getGlobalCaseErrorLiveData().value)
-        Assert.assertEquals(false, covid19ViewModel.isLoading().get())
+        Assert.assertEquals(false, covid19ViewModel.isLoading().value)
     }
 
 
@@ -116,14 +117,14 @@ class COVID19ViewModelRxImplTest{
         covid19ViewModel.loadCountries()
 
         verifySequence {
-            mockLoading.set(true)
+            mockLoading.value = true
             mockRepository.getCountries("deaths")
-            mockLoading.set(false)
+            mockLoading.value = false
         }
 
         Assert.assertEquals(ArrayList::class.java, covid19ViewModel.getCountriesLiveData().value?.javaClass)
         Assert.assertEquals(expectCountriesList, covid19ViewModel.getCountriesLiveData().value)
-        Assert.assertEquals(false, covid19ViewModel.isLoading().get())
+        Assert.assertEquals(false, covid19ViewModel.isLoading().value)
         Assert.assertEquals(expectCountriesList.size, covid19ViewModel.getCountriesLiveData().value?.size)
 
     }

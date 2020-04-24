@@ -23,7 +23,7 @@ class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
         covid19Repository.globalTotalCaseErrorLiveData
     }
 
-    private val isLoadingLazy: ObservableBoolean by lazy {
+    private val isLoadingLazy: MutableLiveData<Boolean> by lazy {
         covid19Repository.isLoading
     }
 
@@ -105,7 +105,7 @@ class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
         return searchErrorLiveData
     }
 
-    override fun isLoading(): ObservableBoolean {
+    override fun isLoading(): MutableLiveData<Boolean> {
         return isLoadingLazy
     }
 }

@@ -1,10 +1,8 @@
 package com.ken.android.app.novel.covid19.report.ui.news
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ken.android.app.novel.covid19.report.R
-import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
-
 import com.ken.android.app.novel.covid19.report.databinding.FragmentNewsBinding
+import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
 
 class FragmentNews : Fragment() {
@@ -43,7 +40,7 @@ class FragmentNews : Fragment() {
         binding.globalRecyclerView.adapter = adapter
         binding.globalRecyclerView.removeItemDecoration(itemDecoration)
         binding.globalRecyclerView.addItemDecoration(itemDecoration)
-
+        binding.lifecycleOwner = this
         return binding.root
     }
 
