@@ -15,10 +15,6 @@
 # Preview
 ![GitHub](https://github.com/KenSun2018/NovelCovid19Report/blob/master/screenshots/COVID19.gif "preview")
 
-# Structure
-![GitHub](https://github.com/KenSun2018/NovelCovid19Report/blob/master/screenshots/structure.jpg "structure")
-
-
 # Library
 * [Retrofit2](https://square.github.io/retrofit/)
 * [Rxjava2](https://github.com/ReactiveX/RxJava/tree/2.x)
