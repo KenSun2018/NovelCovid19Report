@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -35,13 +36,13 @@ import com.ken.android.app.novel.covid19.report.ui.news.FragmentNews
 
 class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
     companion object{
-        private const val TAG = "FragmentTWMaskMap"
+        const val TAG = "FragmentTWMaskMap"
 
         private val TAIWAN = LatLng(23.97, 120.98);
     }
     private lateinit var mMap: GoogleMap
 
-    private lateinit var viewModel : FragmentTWMaskViewModel
+    private val viewModel : FragmentTWMaskViewModel by viewModels<FragmentTWMaskViewModelRxImpl>()
     private lateinit var binding : FragmentTwMaskMapBinding
     private lateinit var mMapFragment : SupportMapFragment
     private var currentDisplayInfoWindowMark : Marker? = null
@@ -55,20 +56,21 @@ class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate<FragmentTwMaskMapBinding>(inflater, R.layout.fragment_tw_mask_map, container, false)
-        mMapFragment = childFragmentManager.findFragmentById(R.id.fragment_map) as SupportMapFragment
-        viewModel = FragmentTWMaskViewModelRxImpl()
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mMapFragment = childFragmentManager.findFragmentById(R.id.fragment_map) as SupportMapFragment
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         mMapFragment.getMapAsync(this)
-        viewModel.getGeoJsonLiveData().observe(requireActivity(), Observer {
+        viewModel.getGeoJsonLiveData().observe(viewLifecycleOwner, Observer {
             addAllMarkers(it)
         })
     }
+
 
     private fun addAllMarkers(it : KiangGeoJson){
         val features = it.features

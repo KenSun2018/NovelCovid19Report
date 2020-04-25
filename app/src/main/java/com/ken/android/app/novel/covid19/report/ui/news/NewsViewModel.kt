@@ -11,5 +11,5 @@ interface NewsViewModel {
     fun isLoading() : LiveData<Boolean>
     fun loadNews(searchKey : String)
 
-    fun destroy()
+
 }

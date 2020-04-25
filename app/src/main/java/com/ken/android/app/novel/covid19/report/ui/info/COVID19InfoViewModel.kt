@@ -18,5 +18,4 @@ interface COVID19InfoViewModel {
     fun loadCountries()
     fun loadCountries(sort : String)
     fun search(country: String)
-    fun destroy()
 }

@@ -28,10 +28,6 @@ class NewsViewModelImpl : ViewModel(), NewsViewModel {
         newsApiRepository.loadNews(searchKey)
     }
 
-    override fun destroy() {
-
-    }
-
 
     override fun getNewsLiveData(): LiveData<ArrayList<NewsArticle>> {
         return newsLiveDataLazy

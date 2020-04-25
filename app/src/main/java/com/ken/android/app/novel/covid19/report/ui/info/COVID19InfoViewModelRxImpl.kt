@@ -3,7 +3,7 @@ package com.ken.android.app.novel.covid19.report.ui.info
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.ken.android.app.novel.covid19.report.plusAssign
+import com.ken.android.app.novel.covid19.report.addTo
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
@@ -61,7 +61,7 @@ open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel 
 
     override fun loadGlobalTotalCase(){
         isLoading.value = true
-        compositeDisposable += covid19RxApiRepository.getGlobalTotalCase()
+        covid19RxApiRepository.getGlobalTotalCase()
             .doFinally{
                 isLoading.value = false
             }
@@ -72,13 +72,13 @@ open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel 
         }, { t ->
 
             globalTotalCaseErrorLiveData.value = "${t.message}"
-        })
+        }).addTo(compositeDisposable)
     }
 
 
     override fun loadCountries(){
         isLoading.value = true
-        compositeDisposable += covid19RxApiRepository.getCountries("deaths")
+        covid19RxApiRepository.getCountries("deaths")
             .doFinally{
                 isLoading.value = false
             }
@@ -95,12 +95,12 @@ open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel 
 
             countriesErrorLiveData.value = "${t.message}"
 
-        })
+        }).addTo(compositeDisposable)
     }
 
     override fun loadCountries(sort : String){
         isLoading.value = true
-        compositeDisposable += covid19RxApiRepository.getCountries(sort)
+        covid19RxApiRepository.getCountries(sort)
             .doFinally{
                 isLoading.value = false
             }
@@ -111,7 +111,7 @@ open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel 
 
             countriesErrorLiveData.value = "${t.message}"
 
-        })
+        }).addTo(compositeDisposable)
 
     }
 
@@ -138,7 +138,7 @@ open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel 
 
 
         isLoading.value = true
-        compositeDisposable += covid19RxApiRepository.searchCountry(country)
+        covid19RxApiRepository.searchCountry(country)
             .doFinally{
                 isLoading.value = false
             }
@@ -150,7 +150,7 @@ open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel 
         }, { t ->
 
             countriesErrorLiveData.value = "${t.message}"
-        })
+        }).addTo(compositeDisposable)
 
     }
 

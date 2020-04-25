@@ -1,4 +1,4 @@
-package com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.viewholder
+package com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

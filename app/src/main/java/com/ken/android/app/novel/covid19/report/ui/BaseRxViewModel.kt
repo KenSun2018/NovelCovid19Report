@@ -3,11 +3,14 @@ package com.ken.android.app.novel.covid19.report.ui
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ken.android.app.novel.covid19.report.utils.Log
 import io.reactivex.disposables.CompositeDisposable
 
 open class BaseRxViewModel : ViewModel() {
-
-    protected var compositeDisposable = CompositeDisposable()
+    companion object{
+        const val TAG = "BaseRxViewModel";
+    }
+    protected val compositeDisposable = CompositeDisposable()
     protected var isLoading = MutableLiveData<Boolean>(false)
 
     @VisibleForTesting
@@ -16,8 +19,9 @@ open class BaseRxViewModel : ViewModel() {
     }
 
 
-    fun destroy(){
-        compositeDisposable.clear()
+    override fun onCleared() {
+        super.onCleared()
+        Log.i(TAG, " onCleared ")
+        compositeDisposable.dispose()
     }
-
 }

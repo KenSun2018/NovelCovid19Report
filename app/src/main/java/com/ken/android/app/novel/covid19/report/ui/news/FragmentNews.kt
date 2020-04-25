@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,15 +16,14 @@ import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentNewsBinding
 import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
+import com.ken.android.app.novel.covid19.report.utils.Log
 
 class FragmentNews : Fragment() {
     companion object{
         const val TAG = "FragmentNews"
     }
 
-    private val viewModel : NewsViewModel by lazy {
-        ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application).create(NewsViewModelRxImpl::class.java)
-    }
+    private val viewModel : NewsViewModel by viewModels<NewsViewModelRxImpl>()
 
     private lateinit var binding : FragmentNewsBinding
 
@@ -32,7 +32,16 @@ class FragmentNews : Fragment() {
         RecyclerViewItemDecoration()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        Log.i(TAG, "onCreateView")
         binding = DataBindingUtil.inflate<FragmentNewsBinding>(inflater, R.layout.fragment_news, container, true)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.i(TAG, "onViewCreated")
+
         binding.viewModel = viewModel
         val linearLayoutManager = LinearLayoutManager(requireActivity())
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -41,21 +50,17 @@ class FragmentNews : Fragment() {
         binding.globalRecyclerView.removeItemDecoration(itemDecoration)
         binding.globalRecyclerView.addItemDecoration(itemDecoration)
         binding.lifecycleOwner = this
-        return binding.root
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         binding.refresh.setOnRefreshListener {
             viewModel.loadNews(resources.getString(R.string.news_search_key))
         }
-        viewModel.getNewsLiveData().observe(requireActivity(), Observer {
+        viewModel.getNewsLiveData().observe(viewLifecycleOwner, Observer {
             binding.refresh.isRefreshing = false
             adapter.setNewsArticle(it)
             adapter.notifyDataSetChanged()
         })
 
-        viewModel.getErrorLiveData().observe(requireActivity(), Observer {
+        viewModel.getErrorLiveData().observe(viewLifecycleOwner, Observer {
             binding.refresh.isRefreshing = false
 
             adapter.notifyDataSetChanged()
@@ -79,13 +84,5 @@ class FragmentNews : Fragment() {
         viewModel.loadNews(resources.getString(R.string.news_search_key))
     }
 
-    override fun onResume() {
-        super.onResume()
 
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.destroy()
-    }
 }

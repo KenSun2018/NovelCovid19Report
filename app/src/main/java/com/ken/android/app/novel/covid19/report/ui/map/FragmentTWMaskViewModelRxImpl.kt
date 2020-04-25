@@ -3,7 +3,8 @@ package com.ken.android.app.novel.covid19.report.ui.map
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.ken.android.app.novel.covid19.report.plusAssign
+import com.ken.android.app.novel.covid19.report.addTo
+
 import com.ken.android.app.novel.covid19.report.repository.bean.KiangGeoJson
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.TaiwanMaskRxApiRepository
@@ -30,7 +31,7 @@ class FragmentTWMaskViewModelRxImpl : BaseRxViewModel(), FragmentTWMaskViewModel
     override fun loadMaskMapData() {
         isLoading.value = true
 
-        compositeDisposable += mapRepository.getPoint()
+        mapRepository.getPoint()
             .doFinally{
                 isLoading.value = false
             }
@@ -41,7 +42,8 @@ class FragmentTWMaskViewModelRxImpl : BaseRxViewModel(), FragmentTWMaskViewModel
         },{
 
 
-        })
+        }).addTo(compositeDisposable)
     }
+
 
 }

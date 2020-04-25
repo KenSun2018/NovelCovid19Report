@@ -5,12 +5,11 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ken.android.app.novel.covid19.report.BuildConfig
-import com.ken.android.app.novel.covid19.report.plusAssign
+import com.ken.android.app.novel.covid19.report.addTo
 import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
-import io.reactivex.disposables.CompositeDisposable
 import java.util.*
 
 class NewsViewModelRxImpl : BaseRxViewModel(), NewsViewModel {
@@ -35,7 +34,7 @@ class NewsViewModelRxImpl : BaseRxViewModel(), NewsViewModel {
 
         val language = Locale.getDefault().country;
 
-        compositeDisposable += newsApiRepository.getTopHeadline(searchKey, language, BuildConfig.NEWS_API_KEY)
+        newsApiRepository.getTopHeadline(searchKey, language, BuildConfig.NEWS_API_KEY)
             .doFinally{
                 isLoading.value = false
             }
@@ -44,7 +43,7 @@ class NewsViewModelRxImpl : BaseRxViewModel(), NewsViewModel {
 
         }, { t ->
             newsErrorLiveData.value = "${t.message}"
-        })
+        }).addTo(compositeDisposable)
 
     }
 

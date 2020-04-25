@@ -3,7 +3,6 @@ package com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.viewholder.BaseViewHolder
 
 open class BaseAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 

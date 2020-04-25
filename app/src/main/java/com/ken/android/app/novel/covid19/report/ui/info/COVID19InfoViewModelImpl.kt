@@ -76,10 +76,6 @@ class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
         covid19Repository.search(country)
     }
 
-    override fun destroy() {
-
-
-    }
 
     override fun getGlobalCaseLiveData(): LiveData<GlobalTotalCase> {
         return globalTotalCaseLiveData

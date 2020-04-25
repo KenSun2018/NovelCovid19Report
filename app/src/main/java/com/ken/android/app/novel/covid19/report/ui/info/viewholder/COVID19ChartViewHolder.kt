@@ -1,4 +1,4 @@
-package com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.viewholder
+package com.ken.android.app.novel.covid19.report.ui.info.viewholder
 
 import android.graphics.Color
 import android.os.Build
@@ -7,6 +7,7 @@ import com.github.mikephil.charting.data.*
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.WidgetCountryChartBinding
 import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
+import com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.BaseViewHolder
 
 class COVID19ChartViewHolder (private var binding : WidgetCountryChartBinding) : BaseViewHolder(binding.root){
     override fun setData(itemData: Any) {

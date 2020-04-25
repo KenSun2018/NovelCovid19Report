@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,10 +21,7 @@ class FragmentCOVID19Info : Fragment() {
         const val TAG = "FragmentCOVID19Info"
     }
 
-    private val infoViewModel : COVID19InfoViewModel by lazy {
-        ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application).create(
-            COVID19InfoViewModelRxImpl::class.java)
-    }
+    private val infoViewModel : COVID19InfoViewModel by viewModels<COVID19InfoViewModelRxImpl>()
 
     private lateinit var binding : FragmentCountryBinding
     private var adapter = COVID19InfoListAdapter()
@@ -67,6 +65,13 @@ class FragmentCOVID19Info : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate<FragmentCountryBinding>(inflater, R.layout.fragment_country, container, true)
 
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.viewModel = infoViewModel
         binding.lifecycleOwner = this
         binding.countryRecyclerView.adapter = adapter
@@ -80,37 +85,32 @@ class FragmentCOVID19Info : Fragment() {
                 infoViewModel.loadGlobalTotalCase()
             }
         })
-        return binding.root
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        infoViewModel.getGlobalCaseLiveData().observe(requireActivity(), Observer {
+        infoViewModel.getGlobalCaseLiveData().observe(viewLifecycleOwner, Observer {
             adapter.setGlobalCase(it)
             infoViewModel.loadCountries()
         })
 
-        infoViewModel.getGlobalCaseErrorLiveData().observe(requireActivity(), Observer {
+        infoViewModel.getGlobalCaseErrorLiveData().observe(viewLifecycleOwner, Observer {
             infoViewModel.loadCountries()
         })
 
-        infoViewModel.getCountriesLiveData().observe(requireActivity(), Observer {
+        infoViewModel.getCountriesLiveData().observe(viewLifecycleOwner, Observer {
             binding.refresh.isRefreshing = false
             adapter.setCountryList(it)
             adapter.notifyDataSetChanged()
         })
 
-        infoViewModel.getCOVID19ChartLiveData().observe(requireActivity(), Observer {
+        infoViewModel.getCOVID19ChartLiveData().observe(viewLifecycleOwner, Observer {
             adapter.setCOVID19ChartData(it)
             adapter.notifyDataSetChanged()
         })
-        infoViewModel.getCountriesErrorLiveData().observe(requireActivity(), Observer {
+        infoViewModel.getCountriesErrorLiveData().observe(viewLifecycleOwner, Observer {
             Toast.makeText(requireActivity(), "error $it", Toast.LENGTH_LONG).show()
             adapter.notifyDataSetChanged()
         })
 
-        infoViewModel.searchErrorLiveData().observe(requireActivity(), Observer {
+        infoViewModel.searchErrorLiveData().observe(viewLifecycleOwner, Observer {
             val searchNotFoundKeyWord = resources.getString(R.string.search_not_found)
             Toast.makeText(requireActivity(),String.format(searchNotFoundKeyWord, it) , Toast.LENGTH_SHORT).show()
         })
@@ -121,11 +121,4 @@ class FragmentCOVID19Info : Fragment() {
         binding.countryRecyclerView.adapter = adapter
         infoViewModel.loadGlobalTotalCase()
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        infoViewModel.destroy()
-    }
-
-
 }
