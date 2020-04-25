@@ -3,18 +3,22 @@ package com.ken.android.app.novel.covid19.report.ui.map
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.ken.android.app.novel.covid19.report.extension.addTo
 import com.ken.android.app.novel.covid19.report.plusAssign
 import com.ken.android.app.novel.covid19.report.repository.bean.KiangGeoJson
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.TaiwanMaskRxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
 
-class FragmentTWMaskViewModelRxImpl : BaseRxViewModel(), FragmentTWMaskViewModel {
+class FragmentTWMaskViewModelRxImpl(
+    private val mapRepository: TaiwanMaskRxApiRepository
+) : BaseRxViewModel(), FragmentTWMaskViewModel {
     companion object{
         private const val TAG = "TWMaskViewModel"
     }
-    private var mapRepository = TaiwanMaskRxApiRepository(OKHttpBaseInterceptor())
-    private var geoJsonLiveData = MutableLiveData<KiangGeoJson>()
+    private val geoJsonLiveData = MutableLiveData<KiangGeoJson>()
 
 
 
@@ -30,7 +34,7 @@ class FragmentTWMaskViewModelRxImpl : BaseRxViewModel(), FragmentTWMaskViewModel
     override fun loadMaskMapData() {
         isLoading.value = true
 
-        compositeDisposable += mapRepository.getPoint()
+        mapRepository.getPoint()
             .doFinally{
                 isLoading.value = false
             }
@@ -42,6 +46,17 @@ class FragmentTWMaskViewModelRxImpl : BaseRxViewModel(), FragmentTWMaskViewModel
 
 
         })
+            .addTo(compositeDisposable)
     }
 
+    class Factory(
+        private val mapRepository: TaiwanMaskRxApiRepository
+    ) : ViewModelProvider.NewInstanceFactory() {
+
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return FragmentTWMaskViewModelRxImpl(
+                mapRepository
+            ) as T
+        }
+    }
 }

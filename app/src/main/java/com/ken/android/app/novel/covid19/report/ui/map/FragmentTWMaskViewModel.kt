@@ -9,5 +9,4 @@ interface FragmentTWMaskViewModel {
     fun isLoading() : LiveData<Boolean>
     fun getGeoJsonLiveData() : LiveData<KiangGeoJson>
     fun loadMaskMapData()
-    fun destroy()
 }

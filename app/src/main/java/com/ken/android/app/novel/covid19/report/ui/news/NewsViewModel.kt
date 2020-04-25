@@ -10,6 +10,4 @@ interface NewsViewModel {
     fun getErrorLiveData() : LiveData<String>
     fun isLoading() : LiveData<Boolean>
     fun loadNews(searchKey : String)
-
-    fun destroy()
 }

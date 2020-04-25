@@ -83,9 +83,4 @@ class FragmentNews : Fragment() {
         super.onResume()
 
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.destroy()
-    }
 }

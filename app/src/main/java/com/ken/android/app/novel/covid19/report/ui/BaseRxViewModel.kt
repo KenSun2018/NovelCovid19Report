@@ -7,7 +7,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 open class BaseRxViewModel : ViewModel() {
 
-    protected var compositeDisposable = CompositeDisposable()
+    protected val compositeDisposable = CompositeDisposable()
     protected var isLoading = MutableLiveData<Boolean>(false)
 
     @VisibleForTesting
@@ -15,9 +15,8 @@ open class BaseRxViewModel : ViewModel() {
         this.isLoading = isLoading
     }
 
-
-    fun destroy(){
-        compositeDisposable.clear()
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
     }
-
 }
