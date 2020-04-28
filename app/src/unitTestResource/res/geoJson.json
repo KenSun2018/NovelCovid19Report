@@ -1,0 +1,653 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2390020016",
+        "name": "金門縣金沙鎮衛生所",
+        "phone": "082-352854",
+        "address": "金門縣金沙鎮三民路１６號",
+        "mask_adult": 5436,
+        "mask_child": 1400,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "-",
+        "note": "口罩每日13:20發放號碼牌，同步開賣，依序販售，售完即止，若未售完將售至15:30",
+        "custom_note": "",
+        "website": "",
+        "county": "金門縣",
+        "town": "金沙鎮",
+        "cunli": "汶沙里",
+        "service_periods": "NNNNNYYYNNYNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.413257,
+          24.489498
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2390030030",
+        "name": "金門縣金湖鎮衛生所",
+        "phone": "082-336662",
+        "address": "金門縣金湖鎮正義里成功７號之１",
+        "mask_adult": 7102,
+        "mask_child": 1155,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "-",
+        "note": "口罩固定星期一至星期日13:20發放號碼牌，13:30至15:30依序販售，售完為止",
+        "custom_note": "",
+        "website": "",
+        "county": "金門縣",
+        "town": "金湖鎮",
+        "cunli": "正義里",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.389422,
+          24.437676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2390040518",
+        "name": "金門縣金寧鄉衛生所",
+        "phone": "082-325735",
+        "address": "金門縣金寧鄉盤山村仁愛新屯２之１號",
+        "mask_adult": 4788,
+        "mask_child": 670,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "-",
+        "note": "5月\/9日星期六看診，防疫口罩每天下午15:00至17:00依序排隊領取號碼牌並現場購買，售完為止",
+        "custom_note": "",
+        "website": "",
+        "county": "金門縣",
+        "town": "金寧鄉",
+        "cunli": "盤山村",
+        "service_periods": "NNNNNNYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.337384,
+          24.44479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2390050032",
+        "name": "金門縣烈嶼鄉衛生所",
+        "phone": "082-362078",
+        "address": "金門縣烈嶼鄉西口村西方６－５號",
+        "mask_adult": 3627,
+        "mask_child": 1200,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "星期一上午看診、星期二上午看診、星期三上午看診、星期四上午看診、星期五上午看診、星期六上午休診、星期日上午休診、星期一下午看診、星期二下午看診、星期三下午看診、星期四下午看診、星期五下午看診、星期六下午休診、星期日下午休診、星期一晚上休診、星期二晚上休診、星期三晚上休診、星期四晚上休診、星期五晚上休診、星期六晚上休診、星期日晚上休診",
+        "note": "每日下午1點發放號碼牌，同步開賣，售完為止。網站口罩數量僅供參考，實際數量請洽本所。",
+        "custom_note": "",
+        "website": "",
+        "county": "金門縣",
+        "town": "烈嶼鄉",
+        "cunli": "西口村",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.239531,
+          24.435193
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2391020010",
+        "name": "連江縣北竿鄉衛生所",
+        "phone": "083-655592",
+        "address": "連江縣北竿鄉塘岐村２５號",
+        "mask_adult": 808,
+        "mask_child": 1405,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "-",
+        "note": "防疫口罩每日08:30-10:00於惠民市場購買。",
+        "custom_note": "",
+        "website": "",
+        "county": "連江縣",
+        "town": "北竿鄉",
+        "cunli": "塘岐村",
+        "service_periods": "NNNNNNYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.996306,
+          26.223091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2391030016",
+        "name": "連江縣莒光鄉西莒衛生所",
+        "phone": "083-689122",
+        "address": "連江縣莒光鄉青帆村１４－１號",
+        "mask_adult": 5572,
+        "mask_child": 1957,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "-",
+        "note": "防疫口罩星期一至五09:00-17:00、(六)09:00-12:00、(日)10:00-14:00現場購買",
+        "custom_note": "",
+        "website": "",
+        "county": "連江縣",
+        "town": "莒光鄉",
+        "cunli": "青帆村",
+        "service_periods": "NNNNNNYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.933082,
+          25.971575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2391030026",
+        "name": "連江縣莒光鄉東莒衛生所",
+        "phone": "083-689038",
+        "address": "連江縣莒光鄉大坪村３０－１號",
+        "mask_adult": 5740,
+        "mask_child": 1271,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "-",
+        "note": "防疫口罩星期一至星期日上午10:00-12:00收取健保卡，下午3:30至本所領取口罩。",
+        "custom_note": "",
+        "website": "",
+        "county": "連江縣",
+        "town": "莒光鄉",
+        "cunli": "大坪村",
+        "service_periods": "NNNNNNYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.973063,
+          25.961129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2391040012",
+        "name": "連江縣東引鄉衛生所",
+        "phone": "083-677206",
+        "address": "連江縣東引鄉中柳村１２３號",
+        "mask_adult": 4129,
+        "mask_child": 1171,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "-",
+        "note": "防疫口罩每日10:00-12:00、15:30-17:30現場購買",
+        "custom_note": "",
+        "website": "",
+        "county": "連江縣",
+        "town": "東引鄉",
+        "cunli": "中柳村",
+        "service_periods": "NNNNNNYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.49044,
+          26.367006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101010013",
+        "name": "松山健康服務中心",
+        "phone": "(02)27653147",
+        "address": "台北市松山區八德路４段６９４號１、２樓",
+        "mask_adult": 711,
+        "mask_child": 867,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售時段為星期一至星期六上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "松山區",
+        "cunli": "慈祐里",
+        "service_periods": "NNNNNYYYNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.577306,
+          25.049669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101100227",
+        "name": "中山健康服務中心",
+        "phone": "(02)25013363",
+        "address": "台北市中山區松江路３６７號１樓",
+        "mask_adult": 3276,
+        "mask_child": 310,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售時段為星期一至星期六上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "中山區",
+        "cunli": "行政里",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.533501,
+          25.064395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101110027",
+        "name": "內湖健康服務中心",
+        "phone": "(02)27908387",
+        "address": "台北市內湖區民權東路６段９９號",
+        "mask_adult": 3898,
+        "mask_child": 274,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售時段為星期一至星期六上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "內湖區",
+        "cunli": "湖興里",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.588923,
+          25.069226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101120014",
+        "name": "南港健康服務中心",
+        "phone": "(02)27868756",
+        "address": "台北市南港區南港路１段３６０號１樓",
+        "mask_adult": 2479,
+        "mask_child": 687,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售時段為星期一至星期六上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "南港區",
+        "cunli": "南港里",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.606758,
+          25.054529
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101150012",
+        "name": "士林健康服務中心",
+        "phone": "(02)28836268",
+        "address": "台北市士林區中正路４３９號１樓",
+        "mask_adult": 3501,
+        "mask_child": 710,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售時段為星期一至星期六上午9點至12點。",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "士林區",
+        "cunli": "福德里",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.519698,
+          25.092845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101161033",
+        "name": "北投健康服務中心",
+        "phone": "(02)28261026",
+        "address": "臺北市北投區石牌路２段１１１號",
+        "mask_adult": 711,
+        "mask_child": 500,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售時段為星期一至星期六上午9點至12點。",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "北投區",
+        "cunli": "永明里",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.517281,
+          25.118112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101170050",
+        "name": "信義健康服務中心",
+        "phone": "(02)87804152",
+        "address": "台北市信義區信義路５段１５號",
+        "mask_adult": 24237,
+        "mask_child": 3,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "口罩販賣機服務時間為週一至週五8:30~17:00；週六8:30~12:00",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "信義區",
+        "cunli": "西村里",
+        "service_periods": "NNNNNNNNNNNNNYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.566898,
+          25.033147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101180038",
+        "name": "中正健康服務中心",
+        "phone": "(02)23210168",
+        "address": "台北市中正區牯嶺街２４號",
+        "mask_adult": 504,
+        "mask_child": 538,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售時段為星期一至星期六上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "中正區",
+        "cunli": "龍福里",
+        "service_periods": "YNYYYYYYNYYYYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.515952,
+          25.030494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101191068",
+        "name": "萬華健康服務中心",
+        "phone": "(02)23395384",
+        "address": "台北市萬華區東園街１５２號",
+        "mask_adult": 1259,
+        "mask_child": 0,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "口罩販賣機服務時間為週一至週五8:30~17:00；週六8:30~12:00",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "萬華區",
+        "cunli": "保德里",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.497613,
+          25.023176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101020019",
+        "name": "大安健康服務中心",
+        "phone": "(02)27390997",
+        "address": "台北市大安區辛亥路３段１５號",
+        "mask_adult": 999,
+        "mask_child": 400,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售時段為星期一至星期六上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "大安區",
+        "cunli": "臥龍里",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.544299,
+          25.021575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101090011",
+        "name": "大同健康服務中心",
+        "phone": "(02)25948971",
+        "address": "台北市大同區昌吉街５２號１至２樓",
+        "mask_adult": 9,
+        "mask_child": 280,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售時段為星期一至星期六上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "大同區",
+        "cunli": "蓬萊里",
+        "service_periods": "NNNNNYYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.516341,
+          25.065815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2101200017",
+        "name": "政大(文山健康服務中心)",
+        "phone": "(02)22343501",
+        "address": "臺北市文山區木柵路３段２２０號",
+        "mask_adult": 2628,
+        "mask_child": 223,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "口罩販售機地點:文山健康中心 電話 22343501  服務時間:週一至週五8:30~17:00；週六8:30~12:00",
+        "custom_note": "",
+        "website": "",
+        "county": "臺北市",
+        "town": "文山區",
+        "cunli": "木新里",
+        "service_periods": "NNNNNNYNNNNNYYYYYYYYY"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.570087,
+          24.989604
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "0291010010",
+        "name": "連江縣立醫院",
+        "phone": "(083)623995",
+        "address": "連江縣南竿鄉復興村２１７號",
+        "mask_adult": 3825,
+        "mask_child": 260,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售口罩時段為每星期一至星期日上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "連江縣",
+        "town": "南竿鄉",
+        "cunli": "復興村",
+        "service_periods": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.949168,
+          26.160844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "5931033943",
+        "name": "崇恩藥局",
+        "phone": "(02)89214022",
+        "address": "新北市永和區成功路２段１３５號１樓",
+        "mask_adult": 5400,
+        "mask_child": 201,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售口罩時段為每星期一至星期日上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "新北市",
+        "town": "永和區",
+        "cunli": "民富里",
+        "service_periods": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.526737,
+          24.998097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "5939171119",
+        "name": "順元藥局",
+        "phone": "(05)7886555",
+        "address": "雲林縣元長鄉中山路２５號",
+        "mask_adult": 4,
+        "mask_child": 705,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售口罩時段為每星期一至星期日上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "雲林縣",
+        "town": "元長鄉",
+        "cunli": "長南村",
+        "service_periods": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.313251,
+          23.648674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "0145080011",
+        "name": "衛生福利部花蓮醫院豐濱原住民分院",
+        "phone": "(03)8358141",
+        "address": "花蓮縣豐濱鄉豐濱村光豐路４１號",
+        "mask_adult": 2982,
+        "mask_child": 690,
+        "updated": "2020\/04\/28 22:56:35",
+        "available": "",
+        "note": "販售口罩時段為每星期一至星期日上午9點至12點",
+        "custom_note": "",
+        "website": "",
+        "county": "花蓮縣",
+        "town": "豐濱鄉",
+        "cunli": "豐濱村",
+        "service_periods": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.521307,
+          23.601975
+        ]
+      }
+    }
+  ]
+}

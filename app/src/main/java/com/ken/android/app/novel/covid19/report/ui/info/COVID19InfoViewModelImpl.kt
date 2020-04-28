@@ -9,11 +9,12 @@ import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.COVID19Repository
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
+import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
 
 
-class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
+class COVID19InfoViewModelImpl(private val covid19Repository : COVID19Repository) : ViewModel(), COVID19InfoViewModel {
 
-    private var covid19Repository = COVID19Repository(OKHttpBaseInterceptor())
+//    private var covid19Repository = COVID19Repository(OKHttpBaseInterceptor())
 
     private val globalTotalCaseLiveData : LiveData<GlobalTotalCase> by lazy {
         covid19Repository.globalTotalCaseLiveData
@@ -21,10 +22,6 @@ class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
 
     private val globalTotalCaseErrorLiveData : LiveData<String> by lazy {
         covid19Repository.globalTotalCaseErrorLiveData
-    }
-
-    private val isLoadingLazy: MutableLiveData<Boolean> by lazy {
-        covid19Repository.isLoading
     }
 
     private val countriesLiveDataLazy : LiveData<List<Country>> by lazy {
@@ -39,7 +36,9 @@ class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
 
     private val covid19ChartLiveData = MutableLiveData<COVID19ChartData>()
 
-
+    private val isLoadingLazy : LiveData<Boolean> by lazy {
+        covid19Repository.isLoading
+    }
 
     override fun loadGlobalTotalCase(){
         covid19Repository.loadGlobalTotalCase()
@@ -76,6 +75,14 @@ class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
         covid19Repository.search(country)
     }
 
+    override fun setMockLoading(isLoading: MutableLiveData<Boolean>) {
+
+    }
+
+    override fun isLoading(): LiveData<Boolean> {
+        return isLoadingLazy
+    }
+
 
     override fun getGlobalCaseLiveData(): LiveData<GlobalTotalCase> {
         return globalTotalCaseLiveData
@@ -101,7 +108,5 @@ class COVID19InfoViewModelImpl : ViewModel(), COVID19InfoViewModel {
         return searchErrorLiveData
     }
 
-    override fun isLoading(): MutableLiveData<Boolean> {
-        return isLoadingLazy
-    }
+
 }

@@ -26,7 +26,7 @@ class COVID19ViewModelRxImplTest{
     var instantExecutorRule = InstantTaskExecutorRule()
 
 
-    private var covid19ViewModel = COVID19InfoViewModelRxImpl()
+    private lateinit var covid19ViewModel : COVID19InfoViewModel
 
     @MockK
     private lateinit var mockRepository: COVID19RxApiRepository
@@ -37,7 +37,7 @@ class COVID19ViewModelRxImplTest{
     @Before
     fun setUp(){
         MockKAnnotations.init(this, relaxUnitFun = true)
-        covid19ViewModel.setMockRepository(mockRepository)
+        covid19ViewModel = COVID19InfoViewModel.RxFactory(mockRepository).create(COVID19InfoViewModelRxImpl::class.java)
         covid19ViewModel.setMockLoading(mockLoading)
 
         // if mockLoading is not false that mean developer is not set isLoading.value = false

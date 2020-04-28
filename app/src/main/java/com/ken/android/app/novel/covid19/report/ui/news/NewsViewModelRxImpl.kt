@@ -12,22 +12,17 @@ import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgR
 import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
 import java.util.*
 
-class NewsViewModelRxImpl : BaseRxViewModel(), NewsViewModel {
+class NewsViewModelRxImpl(private val newsApiRepository : NewsApiOrgRxApiRepository) : BaseRxViewModel(), NewsViewModel {
 
     companion object{
         private const val TAG = "NewsViewModelRxImpl"
     }
-    private var newsApiRepository = NewsApiOrgRxApiRepository(OKHttpBaseInterceptor())
+
 
     private val newsLiveData = MutableLiveData<ArrayList<NewsArticle>> ()
 
     private val newsErrorLiveData = MutableLiveData<String>()
 
-
-    @VisibleForTesting
-    fun setMockRepository(repository : NewsApiOrgRxApiRepository){
-        this.newsApiRepository = repository
-    }
 
     override fun loadNews(searchKey : String){
         isLoading.value = true

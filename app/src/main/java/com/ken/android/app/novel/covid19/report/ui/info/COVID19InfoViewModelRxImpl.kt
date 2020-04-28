@@ -3,6 +3,8 @@ package com.ken.android.app.novel.covid19.report.ui.info
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.ken.android.app.novel.covid19.report.addTo
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
@@ -12,11 +14,13 @@ import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
 import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 
 
-open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel {
+open class COVID19InfoViewModelRxImpl(private val covid19RxApiRepository: COVID19RxApiRepository) : BaseRxViewModel(), COVID19InfoViewModel {
+
+
+
     companion object{
         const val TAG = "COVID19ViewModel";
     }
-    private var covid19RxApiRepository =  COVID19RxApiRepository(OKHttpBaseInterceptor())
 
     private val globalTotalCaseLiveData = MutableLiveData<GlobalTotalCase>()
     private val globalTotalCaseErrorLiveData = MutableLiveData<String>()
@@ -24,11 +28,6 @@ open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel 
     private val countriesErrorLiveData = MutableLiveData<String>()
     private val searchErrorLiveData = MutableLiveData<String>()
     private val covid19ChartLiveData = MutableLiveData<COVID19ChartData>()
-
-    @VisibleForTesting
-    fun setMockRepository(covid19RxApiRepository: COVID19RxApiRepository){
-        this.covid19RxApiRepository = covid19RxApiRepository
-    }
 
     override fun isLoading(): LiveData<Boolean> {
         return isLoading
@@ -153,5 +152,8 @@ open class COVID19InfoViewModelRxImpl : BaseRxViewModel(), COVID19InfoViewModel 
         }).addTo(compositeDisposable)
 
     }
+
+
+
 
 }

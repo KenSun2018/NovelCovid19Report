@@ -8,9 +8,9 @@ import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
 import com.ken.android.app.novel.covid19.report.repository.remote.NewsApiOrgRepository
 import java.util.ArrayList
 
-class NewsViewModelImpl : ViewModel(), NewsViewModel {
+class NewsViewModelImpl(private val newsApiRepository: NewsApiOrgRepository) : ViewModel(), NewsViewModel {
 
-    private var newsApiRepository = NewsApiOrgRepository()
+
 
     private val newsLiveDataLazy : LiveData<ArrayList<NewsArticle>> by lazy {
         newsApiRepository.newsLiveData

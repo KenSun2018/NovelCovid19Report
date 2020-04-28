@@ -7,11 +7,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentCountryBinding
+import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.info.dialog.CountryListDialogFragment
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
 
@@ -21,8 +22,9 @@ class FragmentCOVID19Info : Fragment() {
         const val TAG = "FragmentCOVID19Info"
     }
 
-    private val infoViewModel : COVID19InfoViewModel by viewModels<COVID19InfoViewModelRxImpl>()
-
+    private val infoViewModel : COVID19InfoViewModel by viewModels<COVID19InfoViewModelRxImpl> {
+        COVID19InfoViewModel.RxFactory(COVID19RxApiRepository(OKHttpBaseInterceptor()))
+    }
     private lateinit var binding : FragmentCountryBinding
     private var adapter = COVID19InfoListAdapter()
 
@@ -71,6 +73,9 @@ class FragmentCOVID19Info : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
 
         binding.viewModel = infoViewModel
         binding.lifecycleOwner = this

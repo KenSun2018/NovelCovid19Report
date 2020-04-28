@@ -24,7 +24,7 @@ class NewsViewModelRxImplTest{
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    private var newsViewModel = NewsViewModelRxImpl()
+    private lateinit var newsViewModel : NewsViewModelRxImpl
 
 
 
@@ -37,7 +37,8 @@ class NewsViewModelRxImplTest{
     @Before
     fun setUp(){
         MockKAnnotations.init(this, relaxUnitFun = true)
-        newsViewModel.setMockRepository(mockRepository)
+
+        newsViewModel = NewsViewModel.RxFactory(mockRepository).create(NewsViewModelRxImpl::class.java)
         newsViewModel.setMockLoading(mockLoading)
 
         // mock load finish get value always false, if not false then developer is not close loading

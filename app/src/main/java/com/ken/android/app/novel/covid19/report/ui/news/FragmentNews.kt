@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentNewsBinding
 import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
+import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
 import com.ken.android.app.novel.covid19.report.utils.Log
 
@@ -23,7 +25,9 @@ class FragmentNews : Fragment() {
         const val TAG = "FragmentNews"
     }
 
-    private val viewModel : NewsViewModel by viewModels<NewsViewModelRxImpl>()
+    private val viewModel : NewsViewModel by viewModels<NewsViewModelRxImpl> {
+        NewsViewModel.RxFactory(NewsApiOrgRxApiRepository(OKHttpBaseInterceptor()))
+    }
 
     private lateinit var binding : FragmentNewsBinding
 
@@ -43,6 +47,7 @@ class FragmentNews : Fragment() {
         Log.i(TAG, "onViewCreated")
 
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         val linearLayoutManager = LinearLayoutManager(requireActivity())
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.globalRecyclerView.layoutManager = linearLayoutManager

@@ -28,6 +28,8 @@ import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentTwMaskMapBinding
 import com.ken.android.app.novel.covid19.report.repository.bean.Feature
 import com.ken.android.app.novel.covid19.report.repository.bean.KiangGeoJson
+import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.TaiwanMaskRxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterItem
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterMarkerManager
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterRender
@@ -42,7 +44,9 @@ class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
     }
     private lateinit var mMap: GoogleMap
 
-    private val viewModel : FragmentTWMaskViewModel by viewModels<FragmentTWMaskViewModelRxImpl>()
+    private val viewModel : FragmentTWMaskViewModel by viewModels<FragmentTWMaskViewModelRxImpl> {
+        FragmentTWMaskViewModel.RxFactory(TaiwanMaskRxApiRepository(OKHttpBaseInterceptor()))
+    }
     private lateinit var binding : FragmentTwMaskMapBinding
     private lateinit var mMapFragment : SupportMapFragment
     private var currentDisplayInfoWindowMark : Marker? = null
