@@ -1,5 +1,6 @@
 package com.ken.android.app.novel.covid19.report.ui.news
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ken.android.app.novel.covid19.report.MyApplication
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentNewsBinding
 import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
@@ -19,14 +21,18 @@ import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInte
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
 import com.ken.android.app.novel.covid19.report.utils.Log
+import javax.inject.Inject
 
 class FragmentNews : Fragment() {
     companion object{
         const val TAG = "FragmentNews"
     }
 
+    @Inject
+    lateinit var newsApiOrgRxApiRepository: NewsApiOrgRxApiRepository
+
     private val viewModel : NewsViewModel by viewModels<NewsViewModelRxImpl> {
-        NewsViewModel.RxFactory(NewsApiOrgRxApiRepository(OKHttpBaseInterceptor()))
+        NewsViewModel.RxFactory(newsApiOrgRxApiRepository)
     }
 
     private lateinit var binding : FragmentNewsBinding
@@ -34,6 +40,11 @@ class FragmentNews : Fragment() {
     private var adapter = NewsAdapter()
     private var itemDecoration =
         RecyclerViewItemDecoration()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as MyApplication).appComponent.inject(this)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.i(TAG, "onCreateView")

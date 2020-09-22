@@ -1,5 +1,6 @@
 package com.ken.android.app.novel.covid19.report.ui.info
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -9,12 +10,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.ken.android.app.novel.covid19.report.MyApplication
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentCountryBinding
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.info.dialog.CountryListDialogFragment
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
+import javax.inject.Inject
 
 class FragmentCOVID19Info : Fragment() {
 
@@ -22,15 +26,25 @@ class FragmentCOVID19Info : Fragment() {
         const val TAG = "FragmentCOVID19Info"
     }
 
+    @Inject
+    lateinit var covid19ApiRepository: COVID19RxApiRepository
+
+
     private val infoViewModel : COVID19InfoViewModel by viewModels<COVID19InfoViewModelRxImpl> {
-        COVID19InfoViewModel.RxFactory(COVID19RxApiRepository(OKHttpBaseInterceptor()))
+        COVID19InfoViewModel.RxFactory(covid19ApiRepository)
     }
+
+
     private lateinit var binding : FragmentCountryBinding
     private var adapter = COVID19InfoListAdapter()
 
     private var itemDecoration =
         RecyclerViewItemDecoration()
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as MyApplication).appComponent.inject(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

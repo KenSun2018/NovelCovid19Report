@@ -32,7 +32,7 @@
     <string name="search_not_found">搜尋 %s 失敗</string>
 
     <string name="search_country_hint">請輸入英文國名</string>
-    <string name="news_search_key">肺炎</string>
+    <string name="news_search_key">台灣</string>
 
     <!-- map -->
     <string name="tab_title_tw_mask_map">台灣口罩地圖</string>

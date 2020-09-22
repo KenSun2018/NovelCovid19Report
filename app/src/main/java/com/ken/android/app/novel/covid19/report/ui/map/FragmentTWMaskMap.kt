@@ -24,6 +24,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.gson.Gson
 import com.google.maps.android.clustering.ClusterManager
+import com.ken.android.app.novel.covid19.report.MyApplication
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentTwMaskMapBinding
 import com.ken.android.app.novel.covid19.report.repository.bean.Feature
@@ -34,6 +35,7 @@ import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterItem
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterMarkerManager
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterRender
 import com.ken.android.app.novel.covid19.report.ui.news.FragmentNews
+import javax.inject.Inject
 
 
 class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
@@ -44,8 +46,11 @@ class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
     }
     private lateinit var mMap: GoogleMap
 
+    @Inject
+    lateinit var taiwanMaskRxApiRepository: TaiwanMaskRxApiRepository
+
     private val viewModel : FragmentTWMaskViewModel by viewModels<FragmentTWMaskViewModelRxImpl> {
-        FragmentTWMaskViewModel.RxFactory(TaiwanMaskRxApiRepository(OKHttpBaseInterceptor()))
+        FragmentTWMaskViewModel.RxFactory(taiwanMaskRxApiRepository)
     }
     private lateinit var binding : FragmentTwMaskMapBinding
     private lateinit var mMapFragment : SupportMapFragment
@@ -57,6 +62,11 @@ class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
     private lateinit var mClusterManager : ClusterManager<TWMaskClusterItem>
     private lateinit var mClusterMarkerManager : TWMaskClusterMarkerManager
     private lateinit var mClusterRender : TWMaskClusterRender
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as MyApplication).appComponent.inject(this)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate<FragmentTwMaskMapBinding>(inflater, R.layout.fragment_tw_mask_map, container, false)
@@ -195,6 +205,6 @@ class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
         mClusterMarkerManager.destroy()
         myLatLng = null
         currentDisplayInfoWindowMark = null
-        mClusterManager.renderer = null
+        mClusterManager?.renderer = null
     }
 }

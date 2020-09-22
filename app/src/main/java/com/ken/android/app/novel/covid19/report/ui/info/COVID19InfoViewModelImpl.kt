@@ -1,15 +1,12 @@
 package com.ken.android.app.novel.covid19.report.ui.info
 
-import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.COVID19Repository
-import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
-import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
+import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 
 
 class COVID19InfoViewModelImpl(private val covid19Repository : COVID19Repository) : ViewModel(), COVID19InfoViewModel {

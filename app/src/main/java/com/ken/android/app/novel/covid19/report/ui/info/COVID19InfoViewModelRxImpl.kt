@@ -1,14 +1,10 @@
 package com.ken.android.app.novel.covid19.report.ui.info
 
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.ken.android.app.novel.covid19.report.addTo
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
-import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
 import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
