@@ -1,18 +1,17 @@
 package com.ken.android.app.novel.covid19.report.ui.news
 
 
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ken.android.app.novel.covid19.report.BuildConfig
 import com.ken.android.app.novel.covid19.report.addTo
 import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
-import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
 import java.util.*
+import javax.inject.Inject
 
-class NewsViewModelRxImpl(private val newsApiRepository : NewsApiOrgRxApiRepository) : BaseRxViewModel(), NewsViewModel {
+class NewsViewModelRxImpl @Inject constructor(private val newsApiRepository : NewsApiOrgRxApiRepository) : BaseRxViewModel(), NewsViewModel {
 
     companion object{
         private const val TAG = "NewsViewModelRxImpl"

@@ -1,6 +1,7 @@
 package com.ken.android.app.novel.covid19.report.di
 
 import android.content.Context
+import com.ken.android.app.novel.covid19.report.di.viewmodel.DaggerViewModelInjectionModule
 import com.ken.android.app.novel.covid19.report.ui.info.FragmentCOVID19Info
 import com.ken.android.app.novel.covid19.report.ui.map.FragmentTWMaskMap
 import com.ken.android.app.novel.covid19.report.ui.news.FragmentNews
@@ -9,8 +10,8 @@ import dagger.Component
 import javax.inject.Singleton
 
 
-
-@Component (modules = [APIModule::class])
+@Singleton
+@Component (modules = [APIModule::class, DaggerViewModelInjectionModule::class])
 interface AppComponent {
 
 

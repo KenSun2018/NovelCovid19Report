@@ -8,30 +8,33 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ken.android.app.novel.covid19.report.MyApplication
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentCountryBinding
-import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
-import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
-import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiRepository
+import com.ken.android.app.novel.covid19.report.ui.BaseFragment
 import com.ken.android.app.novel.covid19.report.ui.info.dialog.CountryListDialogFragment
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
 import javax.inject.Inject
 
-class FragmentCOVID19Info : Fragment() {
+class FragmentCOVID19Info : BaseFragment() {
 
     companion object{
         const val TAG = "FragmentCOVID19Info"
     }
 
-    @Inject
-    lateinit var covid19ApiRepository: COVID19RxApiRepository
+//    @Inject
+//    lateinit var covid19ApiRepository: COVID19RxApiRepository
+
+
+
+
 
 
     private val infoViewModel : COVID19InfoViewModel by viewModels<COVID19InfoViewModelRxImpl> {
-        COVID19InfoViewModel.RxFactory(covid19ApiRepository)
+        viewModelFactory
     }
 
 

@@ -8,9 +8,10 @@ import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
 import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
+import javax.inject.Inject
 
 
-open class COVID19InfoViewModelRxImpl(private val covid19RxApiRepository: COVID19RxApiRepository) : BaseRxViewModel(), COVID19InfoViewModel {
+open class COVID19InfoViewModelRxImpl @Inject constructor(private val covid19RxApiRepository: COVID19RxApiRepository) : BaseRxViewModel(), COVID19InfoViewModel {
 
 
 

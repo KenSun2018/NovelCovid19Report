@@ -7,8 +7,9 @@ import com.ken.android.app.novel.covid19.report.addTo
 import com.ken.android.app.novel.covid19.report.repository.bean.KiangGeoJson
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.TaiwanMaskRxApiRepository
 import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
+import javax.inject.Inject
 
-class FragmentTWMaskViewModelRxImpl(private val mapRepository : TaiwanMaskRxApiRepository) : BaseRxViewModel(), FragmentTWMaskViewModel {
+class FragmentTWMaskViewModelRxImpl @Inject constructor(private val mapRepository : TaiwanMaskRxApiRepository) : BaseRxViewModel(), FragmentTWMaskViewModel {
     companion object{
         private const val TAG = "TWMaskViewModel"
     }

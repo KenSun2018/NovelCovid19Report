@@ -19,20 +19,19 @@ import com.ken.android.app.novel.covid19.report.databinding.FragmentNewsBinding
 import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiRepository
+import com.ken.android.app.novel.covid19.report.ui.BaseFragment
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
 import com.ken.android.app.novel.covid19.report.utils.Log
 import javax.inject.Inject
 
-class FragmentNews : Fragment() {
+class FragmentNews : BaseFragment() {
     companion object{
         const val TAG = "FragmentNews"
     }
 
-    @Inject
-    lateinit var newsApiOrgRxApiRepository: NewsApiOrgRxApiRepository
 
     private val viewModel : NewsViewModel by viewModels<NewsViewModelRxImpl> {
-        NewsViewModel.RxFactory(newsApiOrgRxApiRepository)
+        viewModelFactory
     }
 
     private lateinit var binding : FragmentNewsBinding

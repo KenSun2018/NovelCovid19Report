@@ -31,6 +31,7 @@ import com.ken.android.app.novel.covid19.report.repository.bean.Feature
 import com.ken.android.app.novel.covid19.report.repository.bean.KiangGeoJson
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.TaiwanMaskRxApiRepository
+import com.ken.android.app.novel.covid19.report.ui.BaseFragment
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterItem
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterMarkerManager
 import com.ken.android.app.novel.covid19.report.ui.map.cluster.TWMaskClusterRender
@@ -38,7 +39,7 @@ import com.ken.android.app.novel.covid19.report.ui.news.FragmentNews
 import javax.inject.Inject
 
 
-class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
+class FragmentTWMaskMap : BaseFragment(), OnMapReadyCallback {
     companion object{
         const val TAG = "FragmentTWMaskMap"
 
@@ -46,11 +47,9 @@ class FragmentTWMaskMap : Fragment(), OnMapReadyCallback {
     }
     private lateinit var mMap: GoogleMap
 
-    @Inject
-    lateinit var taiwanMaskRxApiRepository: TaiwanMaskRxApiRepository
 
     private val viewModel : FragmentTWMaskViewModel by viewModels<FragmentTWMaskViewModelRxImpl> {
-        FragmentTWMaskViewModel.RxFactory(taiwanMaskRxApiRepository)
+        viewModelFactory
     }
     private lateinit var binding : FragmentTwMaskMapBinding
     private lateinit var mMapFragment : SupportMapFragment
