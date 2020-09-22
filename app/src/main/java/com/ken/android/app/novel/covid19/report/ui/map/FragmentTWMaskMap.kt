@@ -204,6 +204,5 @@ class FragmentTWMaskMap : BaseFragment(), OnMapReadyCallback {
         mClusterMarkerManager.destroy()
         myLatLng = null
         currentDisplayInfoWindowMark = null
-        mClusterManager?.renderer = null
     }
 }

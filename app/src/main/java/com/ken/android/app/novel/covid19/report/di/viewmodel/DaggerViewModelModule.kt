@@ -10,14 +10,14 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class DaggerViewModelInjectionModule{
+abstract class DaggerViewModelModule{
     @Binds
     abstract fun bindViewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory
 
     @Binds
     @IntoMap
     @ViewModelKey(COVID19InfoViewModelRxImpl::class)
-    abstract fun bindCovid19ViewModel(coviD19InfoViewModelRxImpl: COVID19InfoViewModelRxImpl) : ViewModel
+    abstract fun bindCovid19ViewModel(covid19InfoViewModelRxImpl: COVID19InfoViewModelRxImpl) : ViewModel
 
     @Binds
     @IntoMap

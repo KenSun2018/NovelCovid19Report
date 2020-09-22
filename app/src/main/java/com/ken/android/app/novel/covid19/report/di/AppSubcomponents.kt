@@ -1,10 +1,9 @@
 package com.ken.android.app.novel.covid19.report.di
 
 import dagger.Module
-import dagger.Subcomponent
 
 
-@Module
+@Module (subcomponents = [COVID19SubComponent::class])
 class AppSubcomponents {
 
 }

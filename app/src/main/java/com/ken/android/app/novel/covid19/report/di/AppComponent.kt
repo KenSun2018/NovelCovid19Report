@@ -1,7 +1,7 @@
 package com.ken.android.app.novel.covid19.report.di
 
 import android.content.Context
-import com.ken.android.app.novel.covid19.report.di.viewmodel.DaggerViewModelInjectionModule
+import com.ken.android.app.novel.covid19.report.di.viewmodel.DaggerViewModelModule
 import com.ken.android.app.novel.covid19.report.ui.info.FragmentCOVID19Info
 import com.ken.android.app.novel.covid19.report.ui.map.FragmentTWMaskMap
 import com.ken.android.app.novel.covid19.report.ui.news.FragmentNews
@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component (modules = [APIModule::class, DaggerViewModelInjectionModule::class])
+@Component (modules = [APIModule::class, DaggerViewModelModule::class])
 interface AppComponent {
 
 
@@ -20,7 +20,8 @@ interface AppComponent {
         fun create(@BindsInstance applicationContext: Context) : AppComponent
     }
 
-    fun inject(fragment : FragmentCOVID19Info)
+    fun getCOVID19SubComponent() : COVID19SubComponent.Factory
+
 
     fun inject(fragmentNews : FragmentNews)
 
