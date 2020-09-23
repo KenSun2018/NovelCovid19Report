@@ -15,7 +15,12 @@
 # Preview
 ![GitHub](https://github.com/KenSun2018/NovelCovid19Report/blob/master/screenshots/COVID19.gif "preview")
 
+# Dagger App Graph
+![GitHub](https://github.com/KenSun2018/NovelCovid19Report/blob/master/screenshots/Covid19ProjectApplicationGraph.jpg "preview")
+
+
 # Library
+* [Dagger2](https://dagger.dev/)
 * [Retrofit2](https://square.github.io/retrofit/)
 * [Rxjava2](https://github.com/ReactiveX/RxJava/tree/2.x)
 * [Rxandroid](https://github.com/ReactiveX/RxAndroid)
