@@ -4,8 +4,9 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.ken.android.app.novel.covid19.report.R
+import javax.inject.Inject
 
-class RecyclerViewItemDecoration  : RecyclerView.ItemDecoration(){
+class RecyclerViewItemDecoration @Inject constructor() : RecyclerView.ItemDecoration(){
 
 
     override fun getItemOffsets(

@@ -80,13 +80,9 @@ open class COVID19InfoViewModelRxImpl @Inject constructor(private val covid19RxA
             }
             .subscribe({ countries ->
 
+                covid19ChartLiveData.value = COVID19ChartData(countries)
+                countriesLiveData.value = countries
 
-
-            countriesLiveData.value = countries
-            covid19ChartLiveData.value =
-                COVID19ChartData(
-                    countries
-                )
         }, { t ->
 
             countriesErrorLiveData.value = "${t.message}"

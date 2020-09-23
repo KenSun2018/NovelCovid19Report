@@ -1,21 +1,28 @@
-package com.ken.android.app.novel.covid19.report.ui.info.viewholder
+package com.ken.android.app.novel.covid19.report.ui.info.daggerviewholder
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Build
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.WidgetCountryChartBinding
+import com.ken.android.app.novel.covid19.report.di.recyclerview.viewholder.DaggerBaseViewHolder
+import com.ken.android.app.novel.covid19.report.di.recyclerview.viewholder.DaggerViewHolderFactory
 import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
-import com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.BaseViewHolder
-@Deprecated("replace to [DaggerBaseViewHolder]")
-class COVID19ChartViewHolder (private var binding : WidgetCountryChartBinding) : BaseViewHolder(binding.root){
+
+class DaggerCOVID19ChartViewHolder (private var binding : WidgetCountryChartBinding) : DaggerBaseViewHolder(binding.root) {
     override fun setData(itemData: Any) {
         if(itemData is COVID19ChartData){
 
-            val deathsBarDataSet = BarDataSet(itemData.getDeathsBarEntries(), binding.root.context.getString(R.string.chart_for_deaths))
+            val deathsBarDataSet = BarDataSet(itemData.getDeathsBarEntries(), binding.root.context.getString(
+                R.string.chart_for_deaths))
             deathsBarDataSet.color = Color.RED
-            val caseLineDataSet = LineDataSet(itemData.getCasesEntries(), binding.root.context.getString(R.string.chart_for_cases))
+            val caseLineDataSet = LineDataSet(itemData.getCasesEntries(), binding.root.context.getString(
+                R.string.chart_for_cases))
             caseLineDataSet.color = Color.BLUE
             caseLineDataSet.setCircleColor(Color.BLUE)
 
@@ -65,4 +72,15 @@ class COVID19ChartViewHolder (private var binding : WidgetCountryChartBinding) :
         }
     }
 
+    open class Factory : DaggerViewHolderFactory(){
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DaggerBaseViewHolder {
+            val inflater: LayoutInflater = parent.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val widgetCountryChartBinding = DataBindingUtil.inflate<WidgetCountryChartBinding>(inflater, R.layout.widget_country_chart, parent, false)
+            return DaggerCOVID19ChartViewHolder(
+                widgetCountryChartBinding
+            )
+
+        }
+
+    }
 }

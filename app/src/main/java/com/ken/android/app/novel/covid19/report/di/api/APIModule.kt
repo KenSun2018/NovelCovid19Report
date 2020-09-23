@@ -1,8 +1,5 @@
-package com.ken.android.app.novel.covid19.report.di
+package com.ken.android.app.novel.covid19.report.di.api
 
-import com.ken.android.app.novel.covid19.report.di.qualifier.COVID19Service
-import com.ken.android.app.novel.covid19.report.di.qualifier.NewsApiService
-import com.ken.android.app.novel.covid19.report.di.qualifier.TWMaskService
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import dagger.Module
 import dagger.Provides

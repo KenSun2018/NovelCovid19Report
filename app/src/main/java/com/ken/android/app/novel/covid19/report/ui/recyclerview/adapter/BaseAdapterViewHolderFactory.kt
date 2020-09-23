@@ -13,7 +13,7 @@ import com.ken.android.app.novel.covid19.report.ui.info.viewholder.COVID19ChartV
 import com.ken.android.app.novel.covid19.report.ui.info.viewholder.CountryViewHolder
 import com.ken.android.app.novel.covid19.report.ui.info.viewholder.GlobalCaseViewHolder
 import com.ken.android.app.novel.covid19.report.ui.news.viewholder.NewsArticleViewHolder
-
+@Deprecated("replace to [DaggerBaseAdapter]")
 object BaseAdapterViewHolderFactory {
     fun createViewHolder(parent: ViewGroup, viewType: Int) : BaseViewHolder {
         val inflater: LayoutInflater = parent.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

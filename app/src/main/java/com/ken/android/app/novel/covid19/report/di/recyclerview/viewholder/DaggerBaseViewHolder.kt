@@ -1,9 +1,9 @@
-package com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter
+package com.ken.android.app.novel.covid19.report.di.recyclerview.viewholder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-@Deprecated("replace to [DaggerBaseAdapter]")
-abstract class BaseViewHolder(itemView : View)   : RecyclerView.ViewHolder(itemView){
+
+abstract class DaggerBaseViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
     private var onClickListenerCallbackToParent : View.OnClickListener? = null
 

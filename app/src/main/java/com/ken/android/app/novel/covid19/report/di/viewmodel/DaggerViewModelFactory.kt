@@ -10,17 +10,17 @@ import javax.inject.Singleton
 
 @Singleton
 class DaggerViewModelFactory @Inject constructor(
-    private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
-) : ViewModelProvider.Factory{
+    private val creators: Map<Class<out ViewModel>,
+            @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory{
 
     companion object{
         private const val TAG = "DaggerViewModelFactory"
     }
+
+
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         Log.i(TAG, " create $modelClass")
-        val creator = creators[modelClass]
-            ?: creators.asIterable().firstOrNull { modelClass.isAssignableFrom(it.key) }?.value
-            ?: throw IllegalArgumentException("unknown model class $modelClass")
+        val creator = creators[modelClass] ?: creators.asIterable().firstOrNull { modelClass.isAssignableFrom(it.key) }?.value ?: throw IllegalArgumentException("unknown model class $modelClass")
 
         return try {
             creator.get() as T

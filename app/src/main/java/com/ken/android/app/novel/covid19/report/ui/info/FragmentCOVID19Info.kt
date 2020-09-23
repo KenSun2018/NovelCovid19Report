@@ -14,6 +14,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ken.android.app.novel.covid19.report.MyApplication
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentCountryBinding
+import com.ken.android.app.novel.covid19.report.di.recyclerview.DaggerBaseAdapter
 import com.ken.android.app.novel.covid19.report.ui.BaseFragment
 import com.ken.android.app.novel.covid19.report.ui.info.dialog.CountryListDialogFragment
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.RecyclerViewItemDecoration
@@ -28,9 +29,12 @@ class FragmentCOVID19Info : BaseFragment() {
 //    @Inject
 //    lateinit var covid19ApiRepository: COVID19RxApiRepository
 
+    @Inject
+    lateinit var itemDecoration : RecyclerViewItemDecoration
 
 
-
+    @Inject
+    lateinit var daggerBaseAdapter: DaggerBaseAdapter
 
 
     private val infoViewModel : COVID19InfoViewModel by viewModels<COVID19InfoViewModelRxImpl> {
@@ -39,10 +43,9 @@ class FragmentCOVID19Info : BaseFragment() {
 
 
     private lateinit var binding : FragmentCountryBinding
-    private var adapter = COVID19InfoListAdapter()
+    //private var adapter = COVID19InfoListAdapter()
 
-    private var itemDecoration =
-        RecyclerViewItemDecoration()
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -96,7 +99,8 @@ class FragmentCOVID19Info : BaseFragment() {
 
         binding.viewModel = infoViewModel
         binding.lifecycleOwner = this
-        binding.countryRecyclerView.adapter = adapter
+//        binding.countryRecyclerView.adapter = adapter
+        binding.countryRecyclerView.adapter = daggerBaseAdapter
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.countryRecyclerView.layoutManager = layoutManager
@@ -109,7 +113,8 @@ class FragmentCOVID19Info : BaseFragment() {
         })
 
         infoViewModel.getGlobalCaseLiveData().observe(viewLifecycleOwner, Observer {
-            adapter.setGlobalCase(it)
+//            adapter.setGlobalCase(it)
+            daggerBaseAdapter.dataList.add(it)
             infoViewModel.loadCountries()
         })
 
@@ -119,17 +124,24 @@ class FragmentCOVID19Info : BaseFragment() {
 
         infoViewModel.getCountriesLiveData().observe(viewLifecycleOwner, Observer {
             binding.refresh.isRefreshing = false
-            adapter.setCountryList(it)
-            adapter.notifyDataSetChanged()
+//            adapter.setCountryList(it)
+//            adapter.notifyDataSetChanged()
+            daggerBaseAdapter.dataList.addAll(it)
+            daggerBaseAdapter.notifyDataSetChanged()
         })
 
         infoViewModel.getCOVID19ChartLiveData().observe(viewLifecycleOwner, Observer {
-            adapter.setCOVID19ChartData(it)
-            adapter.notifyDataSetChanged()
+//            adapter.setCOVID19ChartData(it)
+//            adapter.notifyDataSetChanged()
+            daggerBaseAdapter.dataList.add(it)
+            daggerBaseAdapter.notifyDataSetChanged()
         })
         infoViewModel.getCountriesErrorLiveData().observe(viewLifecycleOwner, Observer {
             Toast.makeText(requireActivity(), "error $it", Toast.LENGTH_LONG).show()
-            adapter.notifyDataSetChanged()
+//            adapter.notifyDataSetChanged()
+
+//            daggerBaseAdapter.dataList.add(it)
+            daggerBaseAdapter.notifyDataSetChanged()
         })
 
         infoViewModel.searchErrorLiveData().observe(viewLifecycleOwner, Observer {
@@ -140,7 +152,7 @@ class FragmentCOVID19Info : BaseFragment() {
 
 
 
-        binding.countryRecyclerView.adapter = adapter
+        binding.countryRecyclerView.adapter = daggerBaseAdapter
         infoViewModel.loadGlobalTotalCase()
     }
 }

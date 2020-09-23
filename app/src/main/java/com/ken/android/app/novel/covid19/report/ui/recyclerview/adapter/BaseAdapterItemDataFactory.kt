@@ -6,7 +6,7 @@ import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
 
-
+@Deprecated("replace to [DaggerBaseAdapter]")
 object BaseAdapterItemDataFactory {
 
     fun getList(dataList : List<Any>) : ArrayList<BaseAdapterItemData>{

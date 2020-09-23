@@ -4,7 +4,7 @@ import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.BaseAdapter
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.BaseAdapterItemDataFactory
 
-
+@Deprecated(" replace to [DaggerBaseAdapter]")
 class NewsAdapter : BaseAdapter(){
     fun setNewsArticle(newsDataList : ArrayList<NewsArticle>){
         baseAdapterItemDataList.clear()

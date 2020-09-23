@@ -6,6 +6,7 @@ import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.BaseAdapter
 import com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter.BaseAdapterItemDataFactory
 
+@Deprecated(" replace to [DaggerBaseAdapter]")
 class COVID19InfoListAdapter : BaseAdapter(){
     private var globalTotalCase : GlobalTotalCase? = null
     private var countryList :List<Country> = ArrayList<Country>()

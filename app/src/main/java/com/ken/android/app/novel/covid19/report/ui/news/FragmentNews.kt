@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ken.android.app.novel.covid19.report.MyApplication
 import com.ken.android.app.novel.covid19.report.R
 import com.ken.android.app.novel.covid19.report.databinding.FragmentNewsBinding
+import com.ken.android.app.novel.covid19.report.di.recyclerview.DaggerBaseAdapter
 import com.ken.android.app.novel.covid19.report.repository.bean.NewsArticle
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiRepository
@@ -28,7 +29,11 @@ class FragmentNews : BaseFragment() {
     companion object{
         const val TAG = "FragmentNews"
     }
+    @Inject
+    lateinit var itemDecoration : RecyclerViewItemDecoration
 
+    @Inject
+    lateinit var daggerBaseAdapter: DaggerBaseAdapter
 
     private val viewModel : NewsViewModel by viewModels<NewsViewModelRxImpl> {
         viewModelFactory
@@ -36,9 +41,8 @@ class FragmentNews : BaseFragment() {
 
     private lateinit var binding : FragmentNewsBinding
 
-    private var adapter = NewsAdapter()
-    private var itemDecoration =
-        RecyclerViewItemDecoration()
+    //private var adapter = NewsAdapter()
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -61,7 +65,8 @@ class FragmentNews : BaseFragment() {
         val linearLayoutManager = LinearLayoutManager(requireActivity())
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.globalRecyclerView.layoutManager = linearLayoutManager
-        binding.globalRecyclerView.adapter = adapter
+//        binding.globalRecyclerView.adapter = adapter
+        binding.globalRecyclerView.adapter = daggerBaseAdapter
         binding.globalRecyclerView.removeItemDecoration(itemDecoration)
         binding.globalRecyclerView.addItemDecoration(itemDecoration)
         binding.lifecycleOwner = this
@@ -71,17 +76,20 @@ class FragmentNews : BaseFragment() {
         }
         viewModel.getNewsLiveData().observe(viewLifecycleOwner, Observer {
             binding.refresh.isRefreshing = false
-            adapter.setNewsArticle(it)
-            adapter.notifyDataSetChanged()
+//            adapter.setNewsArticle(it)
+//            adapter.notifyDataSetChanged()
+            daggerBaseAdapter.dataList.addAll(it)
+            daggerBaseAdapter.notifyDataSetChanged()
         })
 
         viewModel.getErrorLiveData().observe(viewLifecycleOwner, Observer {
             binding.refresh.isRefreshing = false
 
-            adapter.notifyDataSetChanged()
+//            adapter.notifyDataSetChanged()
+            daggerBaseAdapter.notifyDataSetChanged()
         })
 
-        adapter.setOnItemViewClickListener(object : View.OnClickListener{
+        daggerBaseAdapter.onItemViewClickListener = (object : View.OnClickListener{
             override fun onClick(v: View?) {
 
                 val tag = v?.tag?:return

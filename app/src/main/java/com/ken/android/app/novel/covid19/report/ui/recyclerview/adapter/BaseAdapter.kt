@@ -3,7 +3,7 @@ package com.ken.android.app.novel.covid19.report.ui.recyclerview.adapter
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-
+@Deprecated("replace to [DaggerBaseAdapter]")
 open class BaseAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     protected var baseAdapterItemDataList : ArrayList<BaseAdapterItemData> = ArrayList<BaseAdapterItemData>()
