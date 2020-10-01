@@ -9,6 +9,7 @@ import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.spyk
 import io.mockk.verifySequence
 import io.reactivex.Single
 import org.junit.Assert
@@ -37,6 +38,7 @@ class COVID19ViewModelRxImplTest{
     @Before
     fun setUp(){
         MockKAnnotations.init(this, relaxUnitFun = true)
+        //dummy
         covid19ViewModel = COVID19InfoViewModel.RxFactory(mockRepository).create(COVID19InfoViewModelRxImpl::class.java)
         covid19ViewModel.setMockLoading(mockLoading)
 
@@ -53,6 +55,7 @@ class COVID19ViewModelRxImplTest{
         expectGlobalTotalCase.todayCases = "1"
         expectGlobalTotalCase.cases = "2"
 
+        //stub
         every { mockRepository.getGlobalTotalCase() } returns Single.just(expectGlobalTotalCase)
         covid19ViewModel.loadGlobalTotalCase()
 
@@ -75,6 +78,7 @@ class COVID19ViewModelRxImplTest{
     @Test
     fun test_viewModelLoadGlobalTotalCaseApiException(){
         val exceptionMsg = "test io exception"
+
         val ex = IOException(exceptionMsg);
         every { mockRepository.getGlobalTotalCase() } returns Single.error(ex)
         covid19ViewModel.loadGlobalTotalCase()

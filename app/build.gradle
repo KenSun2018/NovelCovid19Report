@@ -73,9 +73,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    testImplementation 'androidx.test:core:1.2.0' //basic unit test
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation 'androidx.test:core:1.3.0' //basic unit test
     testImplementation 'io.mockk:mockk:1.8.6' // mock for kotlin
     testImplementation 'android.arch.core:core-testing:1.1.1' // LiveData unit test
 
@@ -144,4 +144,6 @@ dependencies {
 
     kapt 'com.google.dagger:dagger-compiler:2.27'
     kaptAndroidTest "com.google.dagger:dagger-compiler:2.27"
+
+    testImplementation 'com.squareup.okhttp3:mockwebserver:3.8.1'
 }

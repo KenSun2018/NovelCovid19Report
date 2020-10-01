@@ -38,10 +38,12 @@ class NewsViewModelRxImplTest{
     fun setUp(){
         MockKAnnotations.init(this, relaxUnitFun = true)
 
+        //dummy
         newsViewModel = NewsViewModel.RxFactory(mockRepository).create(NewsViewModelRxImpl::class.java)
         newsViewModel.setMockLoading(mockLoading)
 
         // mock load finish get value always false, if not false then developer is not close loading
+        // stub
         every { mockLoading.value } returns false
     }
 

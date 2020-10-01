@@ -1,6 +1,10 @@
 package com.ken.android.app.novel.covid19.report.di.api
 
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiService
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiService
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.TaiwanMaskRxApiService
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -51,43 +55,46 @@ open class APIModule {
     }
 
 
-    @NewsApiService
+
+
     @Provides
-    fun provideNewsApiRetrofit(
+    fun provideNewsApiOrgRxApiService(
         gsonConverterFactory: GsonConverterFactory,
         rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
         okHttpClient : OkHttpClient
-    ) : Retrofit {
-        return getBaseRetrofitBuilder(gsonConverterFactory, rxJava2CallAdapterFactory, okHttpClient)
+
+    ) : NewsApiOrgRxApiService {
+        val retrofit = getBaseRetrofitBuilder(gsonConverterFactory, rxJava2CallAdapterFactory, okHttpClient)
             .baseUrl("https://newsapi.org/")
             .build()
+        return retrofit.create(NewsApiOrgRxApiService::class.java)
     }
 
 
-
-    @COVID19Service
     @Provides
-    fun provideCovid19ApiRetrofit(
+    fun provideCOVID19RxApiService(
         gsonConverterFactory: GsonConverterFactory,
         rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
         okHttpClient : OkHttpClient
-    ) : Retrofit {
-        return getBaseRetrofitBuilder(gsonConverterFactory, rxJava2CallAdapterFactory, okHttpClient)
+    ) : COVID19RxApiService {
+        val retrofit = getBaseRetrofitBuilder(gsonConverterFactory, rxJava2CallAdapterFactory, okHttpClient)
             .baseUrl("https://corona.lmao.ninja/v2/")
             .build()
+        return retrofit.create(COVID19RxApiService::class.java)
     }
 
-    @TWMaskService
+
+
     @Provides
-    fun provideTWMaskApiRetrofit(
+    fun provideTaiwanMaskRxApiService(
         gsonConverterFactory: GsonConverterFactory,
         rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
         okHttpClient : OkHttpClient
-    ) : Retrofit {
-
-        return getBaseRetrofitBuilder(gsonConverterFactory, rxJava2CallAdapterFactory, okHttpClient)
+    ) : TaiwanMaskRxApiService{
+        val retrofit = getBaseRetrofitBuilder(gsonConverterFactory, rxJava2CallAdapterFactory, okHttpClient)
             .baseUrl("https://raw.githubusercontent.com/")
             .build()
+        return retrofit.create(TaiwanMaskRxApiService::class.java)
     }
 
     private fun getBaseRetrofitBuilder(
@@ -100,5 +107,7 @@ open class APIModule {
             .addCallAdapterFactory(rxJava2CallAdapterFactory)
             .client(okHttpClient)
     }
+
+
 
 }
