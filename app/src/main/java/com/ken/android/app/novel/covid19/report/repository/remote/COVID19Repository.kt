@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit
 /**
  * 保留參考用，無使用，改用 Rx
  * **/
+@Deprecated("replace with Rx")
 class COVID19Repository (interceptor: Interceptor){
     companion object{
         private const val TAG = "COVID19Repository"

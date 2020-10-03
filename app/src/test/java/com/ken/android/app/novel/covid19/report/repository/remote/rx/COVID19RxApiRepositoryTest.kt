@@ -12,6 +12,7 @@ import okio.BufferedSource
 import okio.buffer
 import okio.source
 import org.junit.*
+import org.mockito.Spy
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,7 +36,7 @@ class COVID19RxApiRepositoryTest {
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build().create(COVID19RxApiService::class.java)
-        covid19RxApiRepository = COVID19RxApiRepository(covid19Service)
+        covid19RxApiRepository = COVID19RxApiRepositoryImpl(covid19Service)
     }
 
     @After

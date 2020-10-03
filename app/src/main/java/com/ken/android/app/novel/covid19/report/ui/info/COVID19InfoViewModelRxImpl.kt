@@ -6,6 +6,7 @@ import com.ken.android.app.novel.covid19.report.addTo
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepositoryImpl
 import com.ken.android.app.novel.covid19.report.ui.BaseRxViewModel
 import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 import javax.inject.Inject

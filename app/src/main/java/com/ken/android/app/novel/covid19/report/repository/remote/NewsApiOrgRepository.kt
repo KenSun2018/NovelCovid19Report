@@ -24,6 +24,7 @@ import kotlin.collections.ArrayList
  * example :
  * https://newsapi.org/v2/top-headlines?q=covid&country=tw&apiKey={{apiKey}}
  * **/
+@Deprecated("replace with Rx")
 class NewsApiOrgRepository {
 
     companion object{

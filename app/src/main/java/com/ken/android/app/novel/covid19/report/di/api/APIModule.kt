@@ -1,7 +1,6 @@
 package com.ken.android.app.novel.covid19.report.di.api
 
 import com.ken.android.app.novel.covid19.report.repository.remote.OKHttpBaseInterceptor
-import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiService
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.NewsApiOrgRxApiService
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.TaiwanMaskRxApiService

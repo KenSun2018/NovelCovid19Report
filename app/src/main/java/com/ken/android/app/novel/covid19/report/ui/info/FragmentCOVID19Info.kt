@@ -26,8 +26,6 @@ class FragmentCOVID19Info : BaseFragment() {
         const val TAG = "FragmentCOVID19Info"
     }
 
-//    @Inject
-//    lateinit var covid19ApiRepository: COVID19RxApiRepository
 
     @Inject
     lateinit var itemDecoration : RecyclerViewItemDecoration

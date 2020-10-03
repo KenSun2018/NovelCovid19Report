@@ -1,7 +1,6 @@
 package com.ken.android.app.novel.covid19.report.ui.info
 
 import androidx.annotation.VisibleForTesting
-import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,9 +8,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
-import com.ken.android.app.novel.covid19.report.repository.remote.COVID19ApiService
 import com.ken.android.app.novel.covid19.report.repository.remote.COVID19Repository
 import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepositoryImpl
 
 interface COVID19InfoViewModel {
     fun isLoading() : LiveData<Boolean>

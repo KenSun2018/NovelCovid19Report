@@ -10,6 +10,8 @@ import retrofit2.http.Query
 /**
  * 保留參考用，無使用，改用 Rx
  * **/
+
+@Deprecated("replace with Rx")
 interface COVID19ApiService {
 
     @GET("all")

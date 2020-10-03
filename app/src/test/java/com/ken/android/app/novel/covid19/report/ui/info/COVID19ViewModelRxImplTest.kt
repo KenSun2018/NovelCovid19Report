@@ -4,12 +4,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.ken.android.app.novel.covid19.report.repository.bean.Country
 import com.ken.android.app.novel.covid19.report.repository.bean.GlobalTotalCase
-import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepository
+import com.ken.android.app.novel.covid19.report.repository.remote.rx.COVID19RxApiRepositoryImpl
 import com.ken.android.app.novel.covid19.report.ui.info.data.COVID19ChartData
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.mockk.spyk
 import io.mockk.verifySequence
 import io.reactivex.Single
 import org.junit.Assert
@@ -30,7 +29,7 @@ class COVID19ViewModelRxImplTest{
     private lateinit var covid19ViewModel : COVID19InfoViewModel
 
     @MockK
-    private lateinit var mockRepository: COVID19RxApiRepository
+    private lateinit var mockRepository: COVID19RxApiRepositoryImpl
 
     @MockK
     private lateinit var mockLoading : MutableLiveData<Boolean>

@@ -13,14 +13,14 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component (modules = [APIModule::class, DaggerViewModelModule::class, DaggerBaseAdapterModule::class])
+@Component (modules = [APIModule::class, DaggerViewModelModule::class, DaggerBaseAdapterModule::class, RepositoryModule::class])
 interface AppComponent {
 
 
-    @Component.Factory
-    interface Factory{
-        fun create(@BindsInstance applicationContext: Context) : AppComponent
-    }
+//    @Component.Factory
+//    interface Factory{
+//        fun create(@BindsInstance applicationContext: Context) : AppComponent
+//    }
 
     fun getCOVID19SubComponent() : COVID19SubComponent.Factory
 

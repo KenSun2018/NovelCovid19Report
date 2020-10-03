@@ -19,6 +19,7 @@ import retrofit2.http.Query
  * example :
  * https://newsapi.org/v2/top-headlines?q=covid&country=tw&apiKey={{apiKey}}
  * **/
+@Deprecated("replace with Rx")
 interface NewsApiOrgApiService {
 
     @GET("v2/top-headlines")
