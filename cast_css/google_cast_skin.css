@@ -1,9 +1,9 @@
 .background {
-  background: center no-repeat url(background.png);
+  background: center no-repeat url(https://github.com/KenSun2018/NovelCovid19Report/blob/master/cast_css/background.png);
 }
 
 .logo {
-  background-image: url(logo.png);
+  background-image: url(https://github.com/KenSun2018/NovelCovid19Report/blob/master/cast_css/logo.png);
 }
 
 .progressBar {
@@ -11,10 +11,10 @@
 }
 
 .splash {
-  background-image: url(slash.png);
+  background-image: url(https://github.com/KenSun2018/NovelCovid19Report/blob/master/cast_css/slash.png);
 }
 
 .watermark {
-  background-image: url(watermark.png);
+  background-image: url(https://github.com/KenSun2018/NovelCovid19Report/blob/master/cast_css/watermark.png);
   background-size: 57px 57px;
 }
