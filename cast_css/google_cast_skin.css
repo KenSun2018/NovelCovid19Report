@@ -18,3 +18,10 @@
   background-image: url("https://raw.githubusercontent.com/KenSun2018/NovelCovid19Report/master/cast_css/watermark.png");
   background-size: 57px 57px;
 }
+
+cast-media-player {
+	--background-image: url("https://raw.githubusercontent.com/KenSun2018/NovelCovid19Report/master/cast_css/background.png");
+	--splash-size: 0px;
+	--watermark-image: url("https://raw.githubusercontent.com/KenSun2018/NovelCovid19Report/master/cast_css/logo.png");
+	--watermark-size: 128px
+}
